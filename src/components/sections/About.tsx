@@ -153,7 +153,7 @@ export default function About() {
                 technical complexity and intuitive user design.
               </p>
               <p className="text-base md:text-lg text-zinc-400 leading-relaxed">
-                Whether it's building robust backend architectures or crafting
+                Whether it&apos;s building robust backend architectures or crafting
                 pixel-perfect mobile interfaces, I focus on writing clean,
                 maintainable code that scales.
               </p>

@@ -1,6 +1,6 @@
 # 🚀 Muhammad Hassan Naeem - Personal Portfolio
 
-A modern, pixel-perfect personal portfolio website built with Next.js, TypeScript, and Tailwind CSS. Featuring smooth animations, responsive design, and a premium dark theme inspired by Vercel, Linear, and Raycast.
+A modern, high-performance personal portfolio website built with **Next.js 16**, **TypeScript 5**, **Tailwind CSS 4**, and **Framer Motion**. Features smooth animations, responsive design, and a premium dark theme with cyan and indigo gradients.
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=flat-square)](https://github.com/muhassannaeem/portfolio)
 [![Next.js](https://img.shields.io/badge/Next.js-16.2.6-black?style=flat-square&logo=next.js)](https://nextjs.org)
@@ -10,94 +10,309 @@ A modern, pixel-perfect personal portfolio website built with Next.js, TypeScrip
 
 ## ✨ Features
 
-- **🎨 Premium Dark Theme** - Modern, elegant design with near-black background and gradient accents
+- **🎨 Premium Dark Theme** - Modern elegant design with cyan (#06B6D4) and indigo (#6366F1) gradients
 - **⚡ Fully Responsive** - Optimized for mobile, tablet, and desktop screens
-- **✨ Smooth Animations** - Subtle motion effects using Framer Motion for professional feel
-- **🎯 Performance Optimized** - Built with Next.js 16 for fast loading and SEO
-- **🔧 TypeScript Support** - Full type safety throughout the project
-- **📱 Mobile Menu** - Responsive hamburger menu for mobile navigation
-- **📧 Contact Form** - Fully functional contact form with form validation
-- **🎨 Beautiful Components** - Glassmorphism effects, gradient overlays, and smooth transitions
-- **♿ Accessible** - Semantic HTML and ARIA attributes for accessibility
+- **✨ Smooth Animations** - Framer Motion for professional micro-interactions and transitions
+- **🎯 Performance Optimized** - Next.js 16 App Router with fast loading and SEO optimization
+- **🔧 TypeScript Support** - Full type safety throughout the codebase
+- **📱 Mobile Menu** - Responsive hamburger navigation for smaller screens
+- **📧 Email Integration** - Nodemailer contact form with Gmail SMTP support
+- **🎨 Glassmorphism Design** - Modern glass effects with backdrop blur and gradient overlays
+- **♿ Accessible** - Semantic HTML and proper ARIA attributes
 
 ## 📋 Project Structure
 
 ```
-src/
-├── components/
-│   ├── layout/
-│   │   ├── Navbar.tsx          # Sticky navigation with mobile menu
-│   │   └── Footer.tsx          # Footer with links and social
-│   ├── sections/
-│   │   ├── Hero.tsx            # Hero section with CTA
-│   │   ├── About.tsx           # About me with stats
-│   │   ├── TechArsenal.tsx     # Technical skills showcase
-│   │   ├── FeaturedProjects.tsx# Project showcase
-│   │   ├── Services.tsx        # Services offered
-│   │   └── Contact.tsx         # Contact form
-│   └── ui/
-│       └── Container.tsx       # Reusable container wrapper
-├── styles/
-│   └── globals.css             # Global styles and design tokens
-└── app/
-    ├── layout.tsx              # Root layout
-    ├── page.tsx                # Home page
-    ├── globals.css             # CSS imports
-    └── ...
+src/components/
+├── layout/
+│   ├── Navbar.tsx          # Sticky navigation with logo & mobile menu
+│   └── Footer.tsx          # Footer with navigation & social links
+├── sections/
+│   ├── Hero.tsx            # Hero with CTA & profile image
+│   ├── About.tsx           # About section with statistics
+│   ├── TechArsenal.tsx     # Technical skills by category
+│   ├── FeaturedProjects.tsx# Portfolio projects showcase
+│   ├── Services.tsx        # Services offered
+│   └── Contact.tsx         # Contact form with email integration
+└── ui/
+    └── Container.tsx       # Reusable max-width wrapper
+
+app/
+├── api/contact/route.ts    # Email API endpoint (Nodemailer)
+├── layout.tsx              # Root layout with metadata
+├── page.tsx                # Home page
+└── globals.css             # Global styles
+
+public/
+├── logo2.png               # Brand logo
+├── Hassan.jpeg             # Profile picture
+├── ielts.png               # IELTS Counsel project image
+├── promography.png         # Promography project image
+├── codesmell.png           # Code Smell Detection project image
+├── bloodpulse.png          # Blood Pulse Connect project image
+└── corefinity.png          # Corefinity project image
 ```
 
 ## 🛠️ Tech Stack
 
-### Core
-- **[Next.js 16](https://nextjs.org/)** - React framework with App Router
-- **[React 19](https://react.dev/)** - UI library
-- **[TypeScript 5](https://www.typescriptlang.org/)** - Type-safe JavaScript
+### Core Framework
+- **Next.js 16** - React framework with App Router for modern web applications
+- **React 19** - UI library for building components
+- **TypeScript 5** - Type-safe JavaScript development
 
 ### Styling & Animation
-- **[Tailwind CSS 4](https://tailwindcss.com/)** - Utility-first CSS
-- **[Framer Motion](https://www.framer.com/motion/)** - Animation library
-- **[Lucide React](https://lucide.dev/)** - Icon library
+- **Tailwind CSS 4** - Utility-first CSS framework
+- **Framer Motion 12** - Advanced animation library for smooth transitions
+- **Lucide React 1.16** - Beautiful, consistent icon library
 
-### Development
-- **[ESLint](https://eslint.org/)** - Code linting
-- **[PostCSS](https://postcss.org/)** - CSS processing
+### Backend & Email
+- **Nodemailer** - SMTP email service for sending emails
+- **Gmail API** - Email delivery via Gmail account
+
+### Development Tools
+- **ESLint 9** - Code quality and consistency linting
+- **PostCSS 4** - CSS processing and optimization
+
+## 📦 Featured Projects
+
+### 1. IELTS Counsel
+- **Live:** https://www.ieltscounsel.com/
+- **Tech:** Python, React, Tailwind
+- **Description:** A complete IELTS prep platform with Listening, Reading, Writing, and AI-powered Speaking modules. The Speaking AI runs the full 3-part interview with personalized feedback on fluency, vocabulary, grammar, and pronunciation.
+
+### 2. Promography
+- **Live:** https://promography.vercel.app/
+- **Tech:** Next.js, Tailwind, Python
+- **Description:** Find the perfect prompt for any task, from creative writing to complex problem-solving. Join thousands of creators sharing their best AI prompts.
+
+### 3. Code Smell Detection
+- **Live:** https://code-smell-detection.vercel.app/
+- **Tech:** React, Python, API
+- **Description:** A web-based tool that scans uploaded source code and flags common design issues like Bloaters, Couplers, and other Object-Oriented smells. Helps developers spot quality and maintainability problems early with clear, structured feedback.
+
+### 4. Blood Pulse Connect
+- **Live:** https://www.figma.com/design/EwgWWL85cK6T0Xs091esDv/Blood-Pulse-Connect
+- **Tech:** Figma, UI/UX, Prototyping
+- **Description:** A full Figma design with interactive prototypes for a blood-donation app that helps donors and recipients connect in minutes. Built around urgency, trust, and removing friction when it matters most.
+
+### 5. Corefinity Studio Website
+- **Live:** https://corefinity-website.vercel.app/
+- **Tech:** Next.js, React, Tailwind CSS, Framer Motion
+- **Description:** Marketing site for Corefinity, a software studio that helps startups, businesses, and enterprises design, build, and launch web, mobile, and AI products. Features clean hero, animated sections, and service-led layout.
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18+ or higher
+- Node.js 18+
 - npm or yarn
+- Gmail account (for contact form email integration)
 
 ### Installation
 
-1. **Clone the repository**
 ```bash
+# Clone repository
 git clone https://github.com/muhassannaeem/portfolio.git
 cd portfolio
-```
 
-2. **Install dependencies**
-```bash
+# Install dependencies
 npm install
-# or
-yarn install
-```
 
-3. **Run the development server**
-```bash
+# Set up environment variables
+cp .env.local .example .env.local
+# Update EMAIL_USER and EMAIL_PASSWORD in .env.local
+
+# Run development server
 npm run dev
-# or
-yarn dev
 ```
 
-4. **Open your browser**
-Navigate to [http://localhost:3000](http://localhost:3000) to see the portfolio.
+Open [http://localhost:3000](http://localhost:3000) to view the portfolio in your browser.
 
-## 📝 Configuration
+## 🔧 Configuration
 
-### Update Personal Information
+### Email Setup with Nodemailer
 
-Edit the following files to customize the portfolio with your information:
+To enable the contact form to send emails:
+
+1. Enable 2-Step Verification in your Gmail account
+2. Generate an App Password at: https://myaccount.google.com/apppasswords
+3. Update `.env.local` with your credentials:
+   ```
+   EMAIL_USER=your-email@gmail.com
+   EMAIL_PASSWORD=your-16-character-app-password
+   ```
+
+The contact form will now send submissions to `muhassannaeem@gmail.com` with user details (name, email, subject, message).
+
+## 📊 Available Scripts
+
+```bash
+# Development server (hot reload)
+npm run dev
+
+# Production build
+npm run build
+
+# Start production server
+npm start
+
+# Run ESLint for code quality
+npm run lint
+```
+
+## 🎨 Design System
+
+### Color Palette
+- **Primary Accent:** Cyan `#06B6D4`
+- **Secondary Accent:** Indigo `#6366F1`
+- **Background:** Near-black `#0a0a0b`
+- **Text Primary:** White `#ffffff`
+- **Text Secondary:** Zinc `#27272a`
+
+### Gradient Effects
+```css
+/* Main Gradient (Cyan → Indigo) */
+background: linear-gradient(to right, #06B6D4, #6366F1);
+
+/* Reversed Gradient (Indigo → Cyan) */
+background: linear-gradient(to right, #6366F1, #06B6D4);
+
+/* Background Glow */
+background: linear-gradient(to bottom-right, rgba(6, 182, 212, 0.2), rgba(99, 102, 241, 0.1));
+```
+
+### Responsive Breakpoints
+- **Mobile:** 0px - 640px (sm)
+- **Tablet:** 641px - 1024px (md)
+- **Desktop:** 1025px+ (lg)
+
+## 📱 Page Sections
+
+### Navbar
+- Sticky header with logo
+- Center navigation (About, Work, Services, Contact)
+- Download CV button & Hire Me CTA
+- Mobile hamburger menu that animates on scroll
+
+### Hero
+- Dynamic headline with gradient text effect
+- Professional description
+- Two CTA buttons (View Projects, Let's Talk)
+- Profile image with glow effect and smooth animations
+- Floating info card (10+ Live Projects)
+
+### About
+- Professional biography
+- 4 statistics cards with gradient values
+  - 1+ Years Experience
+  - 10+ Happy Clients
+  - 1K+ Commits
+  - 02+ Awards
+
+### Tech Arsenal
+- 6 technology categories with icons:
+  - Languages (JavaScript, TypeScript, Python, etc.)
+  - Frontend (React, Next.js, Vue, etc.)
+  - Backend (Node.js, Express, Django, etc.)
+  - AI & ML (TensorFlow, PyTorch, etc.)
+  - Tools (Git, Docker, VS Code, etc.)
+  - Specialties (Web Design, Mobile Apps, etc.)
+- Vertical-centered card layout with tech pill styling
+
+### Featured Projects
+- Grid layout showcasing 5 live projects
+- Project images, descriptions, and tech stacks
+- Live Demo button (opens in new tab)
+- Source Code button (conditionally hidden if no GitHub repo)
+
+### Services
+- 4 service offerings with visual icons
+- Brief descriptions of each service
+
+### Contact
+- Contact CTA heading with gradient text
+- Email and location information
+- Social media links (LinkedIn, GitHub)
+- Fully functional contact form with validation
+- Nodemailer email integration for submissions
+
+### Footer
+- Brand name and tagline
+- Navigation links
+- Social media links
+- Copyright notice
+
+## 🚀 Deployment
+
+### Deploy to Vercel
+
+This portfolio is optimized for Vercel deployment:
+
+```bash
+# Push to GitHub
+git push origin main
+
+# Connect repository in Vercel Dashboard
+# Add environment variables:
+# - EMAIL_USER
+# - EMAIL_PASSWORD
+
+# Deploy automatically on push
+```
+
+### Environment Variables Required
+```
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASSWORD=your-app-password
+```
+
+## 🔍 Code Quality
+
+All files pass ESLint linting with zero errors:
+
+```bash
+npm run lint
+```
+
+No TypeScript compilation errors:
+
+```bash
+npx tsc --noEmit
+```
+
+## 📝 Key Components
+
+### Container Component
+Reusable wrapper with max-width constraint and padding:
+```typescript
+<Container className="...">
+  {/* Content */}
+</Container>
+```
+
+### Motion Components
+All animations use Framer Motion with variants for consistent timing:
+- `containerVariants` - Parent stagger animations
+- `itemVariants` - Child fade-in animations
+- Custom `initial`, `animate`, `whileHover` states
+
+### Project Card
+Displays project showcase with:
+- Image with hover overlay
+- Title and description
+- Technology stack pills
+- Live Demo & Source buttons with conditional rendering
+
+## 📄 License
+
+MIT License - This project is open source and available for personal and commercial use.
+
+## 👨‍💻 Author
+
+**Muhammad Hassan Naeem**
+- Email: muhassannaeem@gmail.com
+- LinkedIn: https://www.linkedin.com/in/muhammad-hassan-naeem-77b551251/
+- GitHub: https://github.com/muhassannaeem
+- Location: Islamabad, Pakistan
 
 #### `app/layout.tsx`
 Update metadata with your name and description:

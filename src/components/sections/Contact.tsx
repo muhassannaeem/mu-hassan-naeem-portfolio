@@ -109,7 +109,7 @@ export default function Contact() {
               variants={itemVariants}
               className="text-4xl sm:text-5xl lg:text-5xl font-bold leading-tight tracking-tight"
             >
-              <span className="block text-white">Let's Build</span>
+              <span className="block text-white">Let&apos;s Build</span>
               <span className="block">
                 Something{' '}
                 <span
@@ -130,8 +130,8 @@ export default function Contact() {
               variants={itemVariants}
               className="text-base md:text-lg text-zinc-400 leading-relaxed max-w-md"
             >
-              Hand on! I'm currently available for freelance projects and full-time opportunities.
-              Let's talk about what we can achieve together.
+              Hand on! I&apos;m currently available for freelance projects and full-time opportunities.
+              Let&apos;s talk about what we can achieve together.
             </motion.p>
 
             {/* Contact Info */}

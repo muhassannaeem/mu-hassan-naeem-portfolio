@@ -11,11 +11,9 @@ const navLinks = ['About', 'Work', 'Services', 'Contact'];
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+  const [isMounted] = useState(true);
 
   useEffect(() => {
-    setIsMounted(true);
-
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
@@ -170,7 +168,7 @@ export default function Navbar() {
                 background: 'linear-gradient(to right, #6366F1, #06B6D4)',
               }}
             >
-              <span>Let's Talk</span>
+              <span>Let&apos;s Talk</span>
               <ArrowRight size={16} />
             </motion.button>
           </div>

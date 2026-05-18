@@ -2,11 +2,11 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Zap } from 'lucide-react';
 import Container from '@/components/ui/Container';
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -17,18 +17,25 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
+    transition: { duration: 0.6 },
   },
 };
 
 export default function Hero() {
   const scrollToContact = () => {
     const element = document.querySelector('#contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToProjects = () => {
+    const element = document.querySelector('#work');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -56,7 +63,7 @@ export default function Hero() {
           <motion.div className="flex flex-col gap-8 justify-center">
             {/* Badge */}
             <motion.div
-              variants={itemVariants as any}
+              variants={itemVariants}
               className="inline-flex w-fit px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm"
             >
               <div className="flex items-center gap-2">
@@ -71,7 +78,7 @@ export default function Hero() {
             </motion.div>
 
             {/* Main Heading */}
-            <motion.div variants={itemVariants as any} className="space-y-2">
+            <motion.div variants={itemVariants} className="space-y-2">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
                 <span className="block text-white">Building modern</span>
                 <span
@@ -102,7 +109,7 @@ export default function Hero() {
 
             {/* Description */}
             <motion.p
-              variants={itemVariants as any}
+              variants={itemVariants}
               className="text-lg text-zinc-400 max-w-lg leading-relaxed"
             >
               Architecture scalable digital solutions with a focus on performance, user
@@ -112,11 +119,12 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <motion.div
-              variants={itemVariants as any}
+              variants={itemVariants}
               className="flex flex-col sm:flex-row gap-4 pt-4"
             >
               {/* Primary Button */}
               <motion.button
+                onClick={scrollToProjects}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-3 rounded-full text-white font-semibold flex items-center justify-center gap-2 hover:shadow-lg transition-all"
@@ -135,14 +143,14 @@ export default function Hero() {
                 onClick={scrollToContact}
                 className="px-8 py-3 rounded-full border border-white/20 text-white font-semibold flex items-center justify-center gap-2 hover:border-white/40 bg-white/5 hover:bg-white/10 transition-all"
               >
-                Let's Talk
+                Let&apos;s Talk
               </motion.button>
             </motion.div>
           </motion.div>
 
           {/* Right Column - Image and Info Card */}
           <motion.div
-            variants={itemVariants as any}
+            variants={itemVariants}
             className="relative flex items-center justify-center"
           >
             {/* Image Card */}
@@ -200,7 +208,7 @@ export default function Hero() {
                           backgroundClip: 'text',
                         }}
                       >
-                        25+
+                        10+
                       </div>
                     <div className="text-xs text-zinc-400">Live Projects</div>
                   </div>
