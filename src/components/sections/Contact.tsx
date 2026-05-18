@@ -57,13 +57,24 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      // Reset form
-      setFormData({ fullName: '', email: '', subject: '', message: '' });
-      alert('Message sent successfully!');
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Reset form
+        setFormData({ fullName: '', email: '', subject: '', message: '' });
+        alert('Message sent successfully! I will get back to you soon.');
+      } else {
+        alert('Failed to send message. Please try again.');
+      }
     } catch (error) {
       console.error('Error sending message:', error);
+      alert('An error occurred. Please try again later.');
     } finally {
       setIsSubmitting(false);
     }
@@ -158,7 +169,9 @@ export default function Contact() {
             {/* Social Links */}
             <motion.div variants={itemVariants} className="flex items-center gap-4 pt-4">
               <a
-                href="#"
+                href="https://www.linkedin.com/in/muhammad-hassan-naeem-77b551251/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 hover:border-white/20 transition-all"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -166,15 +179,9 @@ export default function Contact() {
                 </svg>
               </a>
               <a
-                href="#"
-                className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 hover:border-white/20 transition-all"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7-7 7-7s1.1-4.15 0-7" />
-                </svg>
-              </a>
-              <a
-                href="#"
+                href="https://github.com/muhassannaeem"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 hover:border-white/20 transition-all"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -188,7 +195,7 @@ export default function Contact() {
           <motion.form
             variants={itemVariants}
             onSubmit={handleSubmit}
-            className="flex flex-col gap-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8"
+            className="flex flex-col gap-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6"
           >
             {/* Full Name */}
             <div className="flex flex-col gap-2">
@@ -203,7 +210,7 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="Your name"
                 required
-                className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all"
+                className="px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all"
               />
             </div>
 
@@ -220,7 +227,7 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="your@email.com"
                 required
-                className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all"
+                className="px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all"
               />
             </div>
 
@@ -237,7 +244,7 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="Project inquiry"
                 required
-                className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all"
+                className="px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all"
               />
             </div>
 
@@ -252,9 +259,9 @@ export default function Contact() {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Tell me about your project..."
-                rows={5}
+                rows={3}
                 required
-                className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all resize-none"
+                className="px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all resize-none"
               />
             </div>
 
@@ -264,7 +271,7 @@ export default function Contact() {
               disabled={isSubmitting}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full px-6 py-3 rounded-lg text-white font-semibold flex items-center justify-center gap-2 hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full px-6 py-2.5 rounded-lg text-white font-semibold flex items-center justify-center gap-2 hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               style={{
                 background: 'linear-gradient(to right, #6366F1, #06B6D4)',
                 boxShadow: '0 0 20px rgba(6, 182, 212, 0.5)',

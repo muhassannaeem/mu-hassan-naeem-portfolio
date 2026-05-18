@@ -80,6 +80,28 @@ const projects: Project[] = [
     liveUrl: 'https://code-smell-detection.vercel.app/',
     sourceUrl: '',
   },
+  {
+    id: 'blood-pulse-connect',
+    title: 'Blood Pulse Connect',
+    description:
+      'A full Figma design with prototypes for a blood-donation app that helps donors and recipients connect in minutes. Built around urgency, trust, and removing friction when it matters most.',
+    image: '/bloodpulse.png',
+    category: 'Technology Stack',
+    technologies: ['Figma', 'UI/UX', 'Prototyping'],
+    liveUrl: 'https://www.figma.com/design/EwgWWL85cK6T0Xs091esDv/Blood-Pulse-Connect?node-id=0-1&p=f',
+    sourceUrl: '',
+  },
+  {
+    id: 'corefinity',
+    title: 'Corefinity, Studio Website',
+    description:
+      'Marketing site for Corefinity, a software studio that helps startups, businesses, and enterprises design, build, and launch web, mobile, and AI products. Clean hero, animated sections, and a service-led layout that converts visitors into real conversations.',
+    image: '/corefinity.png',
+    category: 'Technology Stack',
+    technologies: ['Next.js', 'React', 'Tailwind CSS', 'Framer Motion'],
+    liveUrl: 'https://corefinity-website.vercel.app/',
+    sourceUrl: '',
+  },
 ];
 
 interface ProjectCardProps {
