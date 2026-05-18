@@ -44,28 +44,28 @@ interface StatCard {
 
 const stats: StatCard[] = [
   {
-    value: '03+',
+    value: '1+',
     label: 'Years Experience',
     gradientFrom: 'from-purple-400',
     gradientVia: 'via-purple-500',
     gradientTo: 'to-purple-600',
   },
   {
-    value: '40+',
+    value: '10+',
     label: 'Happy Clients',
     gradientFrom: 'from-cyan-400',
     gradientVia: 'via-cyan-500',
     gradientTo: 'to-cyan-600',
   },
   {
-    value: '12K+',
+    value: '1K+',
     label: 'Commits Made',
     gradientFrom: 'from-orange-400',
     gradientVia: 'via-orange-500',
     gradientTo: 'to-orange-600',
   },
   {
-    value: '08+',
+    value: '02+',
     label: 'Tech Awards',
     gradientFrom: 'from-indigo-400',
     gradientVia: 'via-indigo-500',

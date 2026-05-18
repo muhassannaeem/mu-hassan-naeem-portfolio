@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion, Variants } from 'framer-motion';
 import { ExternalLink, Code } from 'lucide-react';
 import Container from '@/components/ui/Container';
@@ -47,37 +48,37 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: 'fixpro',
-    title: 'FixPro',
+    id: 'ielts-counsel',
+    title: 'IELTS Counsel',
     description:
-      'A comprehensive maintenance and repair management ecosystem',
-    image: '/projects/fixpro.png',
+      'A complete IELTS prep platform with Listening, Reading, Writing, and Speaking modules, personalized study plans, and real-time feedback to help you achieve your target score.',
+    image: '/ielts.png',
     category: 'Technology Stack',
-    technologies: ['React', 'API', 'Integrations'],
-    liveUrl: '#',
-    sourceUrl: '#',
+    technologies: ['Python', 'React', 'Tailwind'],
+    liveUrl: 'https://www.ieltscounsel.com/',
+    sourceUrl: '',
   },
   {
-    id: 'ielts-ai',
-    title: 'IELTS AI Eval',
+    id: 'promography',
+    title: 'Promography',
     description:
-      'Automated essay scoring system utilizing LLMs to provide instant...',
-    image: '/projects/ielts-ai.png',
+      'Find the perfect prompt for any task, from creative writing to complex problem-solving. Join thousands of creators sharing their best AI prompts.',
+    image: '/promography.png',
     category: 'Technology Stack',
-    technologies: ['Python', 'Vision', 'Prompt'],
-    liveUrl: '#',
-    sourceUrl: '#',
+    technologies: ['Next.js', 'Tailwind', 'Python'],
+    liveUrl: 'https://promography.vercel.app/',
+    sourceUrl: '',
   },
   {
-    id: 'orderswift',
-    title: 'OrderSwift',
+    id: 'code-smell-detection',
+    title: 'Code Smell Detection',
     description:
-      'A high-performance realtime commerce platform with real-time...',
-    image: '/projects/orderswift.png',
+      'A web-based tool that scans uploaded source code and flags common design issues like Bloaters, Couplers, and other Object-Oriented smells. Helps developers spot quality and maintainability problems early, with clear, structured feedback for each finding.',
+    image: '/codesmell.png',
     category: 'Technology Stack',
-    technologies: ['Flutter', 'Firebase', 'Stripe'],
-    liveUrl: '#',
-    sourceUrl: '#',
+    technologies: ['React', 'Python', 'API'],
+    liveUrl: 'https://code-smell-detection.vercel.app/',
+    sourceUrl: '',
   },
 ];
 
@@ -96,24 +97,24 @@ function ProjectCard({ project, index }: ProjectCardProps) {
     >
       {/* Project Image */}
       <div className="relative w-full h-48 md:h-56 overflow-hidden bg-gradient-to-br from-zinc-900 to-zinc-950 border-b border-white/10">
-        <div className="w-full h-full flex items-center justify-center text-zinc-600">
-          {/* Placeholder for project image */}
-          <div className="text-sm">Project Image</div>
-        </div>
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          className="object-cover"
+          quality={100}
+        />
         {/* Hover overlay */}
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
 
       {/* Content */}
       <div className="flex flex-col gap-4 p-6 flex-grow">
-        {/* Title and Category */}
-        <div className="flex flex-col gap-2">
+        {/* Title */}
+        <div>
           <h3 className="text-lg md:text-xl font-bold text-white">
             {project.title}
           </h3>
-          <span className="text-xs font-semibold tracking-widest text-zinc-500 uppercase">
-            {project.category}
-          </span>
         </div>
 
         {/* Description */}
@@ -121,34 +122,43 @@ function ProjectCard({ project, index }: ProjectCardProps) {
           {project.description}
         </p>
 
-        {/* Technologies */}
-        <div className="flex flex-wrap gap-2 pt-2">
-          {project.technologies.map((tech, i) => (
-            <span
-              key={i}
-              className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-zinc-400"
-            >
-              {tech}
-            </span>
-          ))}
+        {/* Technologies Section */}
+        <div className="flex flex-col gap-2 pt-2">
+          <h4 className="text-xs font-semibold tracking-widest text-zinc-500 uppercase">
+            Technology Stack
+          </h4>
+          <div className="flex flex-wrap gap-2">
+            {project.technologies.map((tech, i) => (
+              <span
+                key={i}
+                className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-zinc-400"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-3 pt-4 mt-auto">
+        <div className={`flex gap-3 pt-4 mt-auto ${!project.sourceUrl ? 'w-full' : ''}`}>
           <a
             href={project.liveUrl}
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-medium hover:bg-white/10 hover:border-white/20 transition-all"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${!project.sourceUrl ? 'w-full' : 'flex-1'} flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-medium hover:bg-white/10 hover:border-white/20 transition-all`}
           >
             <ExternalLink size={16} />
             <span>Live Demo</span>
           </a>
-          <a
-            href={project.sourceUrl}
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-medium hover:bg-white/10 hover:border-white/20 transition-all"
-          >
-            <Code size={16} />
-            <span>Source</span>
-          </a>
+          {project.sourceUrl && (
+            <a
+              href={project.sourceUrl}
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-medium hover:bg-white/10 hover:border-white/20 transition-all"
+            >
+              <Code size={16} />
+              <span>Source</span>
+            </a>
+          )}
         </div>
       </div>
     </motion.div>
@@ -158,7 +168,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
 export default function FeaturedProjects() {
   return (
     <section
-      id="projects"
+      id="work"
       className="relative w-full py-20 md:py-32 flex items-center justify-center overflow-hidden"
     >
       {/* Background gradient elements */}

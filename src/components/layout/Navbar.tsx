@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Menu, X, Download, ArrowRight } from 'lucide-react';
 import Container from '@/components/ui/Container';
@@ -61,19 +62,14 @@ export default function Navbar() {
             className="flex items-center gap-3 flex-1"
             whileHover={{ scale: 1.02 }}
           >
-            {/* Logo Placeholder */}
-            <div className="relative w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
-              <span className="text-white text-xs font-bold">MHN</span>
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500/20 to-cyan-500/20 blur-xl" />
-            </div>
-
-            {/* Full Name */}
-            <span className="text-white font-semibold text-sm hidden sm:inline">
-              Muhammad Hassan Naeem
-            </span>
-            <span className="text-white font-semibold text-sm sm:hidden">
-              MHN
-            </span>
+            {/* Logo */}
+            <Image
+              src="/logo2.png"
+              alt="Logo"
+              width={140}
+              height={140}
+              className="flex-shrink-0"
+            />
           </motion.div>
 
           {/* Center Navigation - Desktop */}
@@ -109,7 +105,11 @@ export default function Navbar() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleScrollToSection('#contact')}
-                className="px-4 py-2 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 text-white text-sm font-medium flex items-center gap-2 hover:shadow-lg hover:shadow-indigo-500/50 transition-all"
+                className="px-4 py-2 rounded-full text-white text-sm font-medium flex items-center gap-2 hover:shadow-lg transition-all"
+                style={{
+                  background: 'linear-gradient(to right, #6366F1, #06B6D4)',
+                  boxShadow: '0 0 20px rgba(6, 182, 212, 0.5)',
+                }}
               >
                 <span className="hidden sm:inline">Hire Me</span>
                 <span className="sm:hidden">Talk</span>
@@ -165,7 +165,10 @@ export default function Navbar() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => handleScrollToSection('#contact')}
-              className="w-full px-4 py-2 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 text-white text-sm font-medium flex items-center justify-center gap-2"
+              className="w-full px-4 py-2 rounded-full text-white text-sm font-medium flex items-center justify-center gap-2"
+              style={{
+                background: 'linear-gradient(to right, #6366F1, #06B6D4)',
+              }}
             >
               <span>Let's Talk</span>
               <ArrowRight size={16} />

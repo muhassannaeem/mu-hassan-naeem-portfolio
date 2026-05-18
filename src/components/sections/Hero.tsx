@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Zap } from 'lucide-react';
 import Container from '@/components/ui/Container';
@@ -59,7 +60,12 @@ export default function Hero() {
               className="inline-flex w-fit px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm"
             >
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-gradient-to-r from-indigo-400 to-cyan-400" />
+                <div
+                  className="w-2 h-2 rounded-full"
+                  style={{
+                    background: 'linear-gradient(to right, #06B6D4, #6366F1)',
+                  }}
+                />
                 <span className="text-xs font-medium text-white">Software Engineer</span>
               </div>
             </motion.div>
@@ -68,10 +74,26 @@ export default function Hero() {
             <motion.div variants={itemVariants as any} className="space-y-2">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
                 <span className="block text-white">Building modern</span>
-                <span className="block bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                <span
+                  className="block bg-clip-text text-transparent"
+                  style={{
+                    background: 'linear-gradient(to right, #06B6D4, #6366F1)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
+                >
                   web, mobile, and
                 </span>
-                <span className="block bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                <span
+                  className="block bg-clip-text text-transparent"
+                  style={{
+                    background: 'linear-gradient(to right, #06B6D4, #6366F1)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
+                >
                   AI-powered
                 </span>
                 <span className="block text-white">applications.</span>
@@ -97,7 +119,11 @@ export default function Hero() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 text-white font-semibold flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-indigo-500/50 transition-all"
+                className="px-8 py-3 rounded-full text-white font-semibold flex items-center justify-center gap-2 hover:shadow-lg transition-all"
+                style={{
+                  background: 'linear-gradient(to right, #6366F1, #06B6D4)',
+                  boxShadow: '0 0 20px rgba(6, 182, 212, 0.5)',
+                }}
               >
                 View Projects
               </motion.button>
@@ -124,29 +150,28 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
-              className="relative w-full aspect-square max-w-md lg:max-w-lg"
+              className="relative w-full mt-8 max-w-xs lg:max-w-sm"
             >
               {/* Glow effect behind image */}
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 via-purple-500/10 to-cyan-500/20 rounded-3xl blur-3xl" />
+              <div
+                className="absolute inset-0 rounded-3xl blur-3xl"
+                style={{
+                  background: 'linear-gradient(to bottom-right, rgba(6, 182, 212, 0.2), rgba(99, 102, 241, 0.1))',
+                }}
+              />
 
-              {/* Image container with glass effect */}
-              <div className="relative w-full h-full rounded-3xl overflow-hidden backdrop-blur-xl border border-white/10 bg-white/5">
-                {/* Placeholder for profile image */}
-                <div className="w-full h-full bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center relative">
-                  {/* Inner gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
-
-                  {/* Placeholder avatar with initials */}
-                  <div className="text-center space-y-4">
-                    <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-cyan-500 flex items-center justify-center border border-white/20">
-                      <span className="text-4xl font-bold text-white">MHN</span>
-                    </div>
-                    <p className="text-sm text-zinc-400">Replace with profile image</p>
-                  </div>
-                </div>
-
-                {/* Border glow effect */}
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-indigo-500/20 via-purple-500/10 to-cyan-500/20 pointer-events-none" />
+              {/* Image container - clean and sleek */}
+              <div className="relative w-full rounded-3xl overflow-hidden border border-white/10" style={{ aspectRatio: '3/4' }}>
+                {/* Profile Image */}
+                <Image
+                  src="/Hassan.jpeg"
+                  alt="Hassan"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover object-center"
+                  priority
+                  quality={100}
+                />
               </div>
 
               {/* Floating Info Card */}
@@ -157,11 +182,26 @@ export default function Hero() {
                 className="absolute -bottom-8 -left-6 md:-left-12 lg:-left-16 bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6 shadow-xl"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
+                  <div
+                    className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{
+                      background: 'linear-gradient(to bottom-right, #06B6D4, #6366F1)',
+                    }}
+                  >
                     <Zap size={24} className="text-white" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-white">25+</div>
+                      <div
+                        className="text-2xl font-bold"
+                        style={{
+                          background: 'linear-gradient(to right, #6366F1, #06B6D4)',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          backgroundClip: 'text',
+                        }}
+                      >
+                        25+
+                      </div>
                     <div className="text-xs text-zinc-400">Live Projects</div>
                   </div>
                 </div>

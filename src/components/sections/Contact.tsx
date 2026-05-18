@@ -101,7 +101,14 @@ export default function Contact() {
               <span className="block text-white">Let's Build</span>
               <span className="block">
                 Something{' '}
-                <span className="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                <span
+                  style={{
+                    background: 'linear-gradient(to right, #06B6D4, #6366F1)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
+                >
                   Great.
                 </span>
               </span>
@@ -257,7 +264,11 @@ export default function Contact() {
               disabled={isSubmitting}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 text-white font-semibold flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-indigo-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full px-6 py-3 rounded-lg text-white font-semibold flex items-center justify-center gap-2 hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              style={{
+                background: 'linear-gradient(to right, #6366F1, #06B6D4)',
+                boxShadow: '0 0 20px rgba(6, 182, 212, 0.5)',
+              }}
             >
               <Send size={18} />
               {isSubmitting ? 'Sending...' : 'Send Message'}

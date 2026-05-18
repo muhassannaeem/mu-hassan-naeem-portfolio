@@ -52,44 +52,44 @@ interface TechCard {
 const techCards: TechCard[] = [
   {
     id: 'languages',
-    icon: <Code2 size={24} />,
+    icon: <Code2 size={32} />,
     title: 'Languages',
-    technologies: ['TypeScript', 'Python', 'Rust', 'C++', 'Java'],
+    technologies: ['JavaScript', 'Python', 'C++', 'Java', 'SQL', 'Kotlin', 'Typescript'],
     accentColor: 'from-indigo-500 to-indigo-600',
   },
   {
     id: 'frontend',
-    icon: <Palette size={24} />,
+    icon: <Palette size={32} />,
     title: 'Frontend',
-    technologies: ['React', 'Next.js', 'TailwindCSS', 'Flutter'],
+    technologies: ['React', 'Next.js', 'TailwindCSS', 'Jetpack Compose'],
     accentColor: 'from-cyan-500 to-cyan-600',
   },
   {
     id: 'backend',
-    icon: <Server size={24} />,
+    icon: <Server size={32} />,
     title: 'Backend',
-    technologies: ['Node.js', 'FastAPI', 'Flask', 'PostgreSQL'],
+    technologies: ['Node.js', 'FastAPI', 'Express.js', 'MongoDB', 'Rest APIs', 'MySQL'],
     accentColor: 'from-orange-500 to-orange-600',
   },
   {
     id: 'aiml',
-    icon: <Brain size={24} />,
+    icon: <Brain size={32} />,
     title: 'AI & ML',
-    technologies: ['PyTorch', 'TensorFlow', 'Spacy', 'LangChain'],
+    technologies: ['TensorFlow', 'Prompt Engineering', 'NLP', 'LLM Evaluation'],
     accentColor: 'from-purple-500 to-purple-600',
   },
   {
     id: 'tools',
-    icon: <Wrench size={24} />,
+    icon: <Wrench size={32} />,
     title: 'Tools',
-    technologies: ['Docker', 'Git', 'Figma', 'Postman'],
+    technologies: ['Docker', 'Git', 'Figma', 'Postman', 'Vercel'],
     accentColor: 'from-pink-500 to-pink-600',
   },
   {
     id: 'specialties',
-    icon: <Zap size={24} />,
+    icon: <Zap size={32} />,
     title: 'Specialties',
-    technologies: ['System Design', 'Microservices', 'Cloud Architecture'],
+    technologies: ['Full-Stack Development', 'AI Integration', 'Cloud Deployment', 'Performance Optimization'],
     accentColor: 'from-emerald-500 to-emerald-600',
   },
 ];
@@ -105,28 +105,28 @@ function TechCard({ card, index }: TechItemProps) {
       variants={cardVariants}
       transition={{ delay: index * 0.08 }}
       whileHover={{ y: -8 }}
-      className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:border-white/20 transition-all duration-300"
+      className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 hover:border-white/20 transition-all duration-300 flex flex-col items-center"
     >
       {/* Hover glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-300" />
 
-      <div className="relative z-10 flex flex-col gap-5">
-        {/* Header with Icon and Title */}
-        <div className="flex items-center gap-3">
-          <div
-            className={`p-3 rounded-lg bg-gradient-to-br ${card.accentColor} text-white flex items-center justify-center flex-shrink-0`}
-          >
-            {card.icon}
-          </div>
-          <h3 className="text-lg font-semibold text-white">{card.title}</h3>
+      <div className="relative z-10 flex flex-col items-center text-center gap-4 w-full">
+        {/* Icon */}
+        <div
+          className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${card.accentColor} text-white flex items-center justify-center flex-shrink-0`}
+        >
+          {card.icon}
         </div>
 
+        {/* Title */}
+        <h3 className="text-base font-semibold text-white whitespace-nowrap">{card.title}</h3>
+
         {/* Technology List */}
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1.5 w-full justify-center">
           {card.technologies.map((tech, i) => (
             <span
               key={i}
-              className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs md:text-sm text-zinc-300 hover:border-white/20 transition-colors"
+              className="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-zinc-300 hover:border-white/20 transition-colors"
             >
               {tech}
             </span>
