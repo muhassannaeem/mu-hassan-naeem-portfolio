@@ -30,6 +30,15 @@ export default function Navbar() {
     }
   };
 
+  const handleDownloadCV = () => {
+    const link = document.createElement('a');
+    link.href = '/MuhammadHassanNaeem_Resume.pdf';
+    link.download = 'MuhammadHassanNaeem_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <>
       {/* Fixed navbar background effect */}
@@ -90,6 +99,7 @@ export default function Navbar() {
             <div className="hidden sm:flex gap-3">
               {/* Download CV Button */}
               <motion.button
+                onClick={handleDownloadCV}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-4 py-2 rounded-full border border-white/20 text-white text-sm font-medium flex items-center gap-2 hover:border-white/40 bg-white/5 hover:bg-white/10 transition-all"
@@ -151,6 +161,7 @@ export default function Navbar() {
           {/* Mobile Buttons */}
           <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-white/10">
             <motion.button
+              onClick={handleDownloadCV}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="w-full px-4 py-2 rounded-full border border-white/20 text-white text-sm font-medium flex items-center justify-center gap-2 hover:border-white/40 bg-white/5"
