@@ -32,8 +32,8 @@ export default function Navbar() {
 
   const handleDownloadCV = () => {
     const link = document.createElement('a');
-    link.href = '/MuhammadHassanNaeem_Resume.pdf';
-    link.download = 'MuhammadHassanNaeem_Resume.pdf';
+    link.href = '/MuhammadHassanNaeem_Resume_July2026.pdf';
+    link.download = 'MuhammadHassanNaeem_Resume_July2026.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
