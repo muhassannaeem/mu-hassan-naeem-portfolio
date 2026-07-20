@@ -102,6 +102,17 @@ const projects: Project[] = [
     liveUrl: 'https://corefinity-website.vercel.app/',
     sourceUrl: '',
   },
+  {
+    id: 'docxtract',
+    title: 'DocXtract',
+    description:
+      'An AI-powered document intelligence platform that transforms PDFs into interactive learning resources through summarization, document chat, comparisons, quizzes, and flashcards, enabling faster understanding and knowledge extraction.',
+    image: '/docxtract.png',
+    category: 'Technology Stack',
+    technologies: ['Python', 'FastAPI', 'Next.js', 'MongoDB'],
+    liveUrl: 'https://doc-xtract-frontend.vercel.app/',
+    sourceUrl: '',
+  },
 ];
 
 interface ProjectCardProps {
