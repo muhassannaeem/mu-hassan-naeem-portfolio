@@ -172,7 +172,7 @@ export default function Hero() {
               <div className="relative w-full rounded-3xl overflow-hidden border border-white/10" style={{ aspectRatio: '3/4' }}>
                 {/* Profile Image */}
                 <Image
-                  src="/Hassan.jpeg"
+                  src="/Hassan.png"
                   alt="Hassan"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
