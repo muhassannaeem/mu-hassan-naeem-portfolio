@@ -27,7 +27,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     <motion.div
       variants={cardVariants}
       transition={{ delay: index * 0.1 }}
-      whileHover={{ y: -8 }}
+      whileHover={{ y: -10, scale: 1.02 }}
+      whileTap={{ scale: 0.99 }}
       className="group flex flex-col h-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-all duration-300"
     >
       <div className="relative w-full h-48 md:h-56 overflow-hidden bg-gradient-to-br from-zinc-900 to-zinc-950 border-b border-white/10">
@@ -38,10 +39,10 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           loading={isFirstProject ? 'eager' : 'lazy'}
           priority={isFirstProject}
-          className="object-cover"
+          className="object-cover transition-transform duration-700 group-hover:scale-110"
           quality={100}
         />
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
 
       <div className="flex flex-col gap-4 p-6 flex-grow">
@@ -63,7 +64,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             {project.technologies.map((tech, i) => (
               <span
                 key={i}
-                className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-zinc-400"
+                className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-zinc-400 transition-all duration-300 group-hover:border-white/20 group-hover:text-white"
               >
                 {tech}
               </span>
