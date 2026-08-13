@@ -75,6 +75,8 @@ export default function Navbar() {
               alt="Logo"
               width={140}
               height={140}
+              loading="eager"
+              priority
               className="flex-shrink-0"
             />
           </motion.div>
