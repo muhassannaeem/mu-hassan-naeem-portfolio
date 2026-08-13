@@ -41,11 +41,13 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       </div>
 
       <div className="flex flex-col gap-4 p-6 flex-grow">
-        <div>
-          <h3 className="text-lg md:text-xl font-bold text-white">{project.title}</h3>
+        <div className="min-h-[3.5rem] md:min-h-[4rem] flex items-start">
+          <h3 className="text-base md:text-lg font-semibold leading-snug text-white">
+            {project.title}
+          </h3>
         </div>
 
-        <p className="text-sm md:text-base text-zinc-400 leading-relaxed flex-grow">
+        <p className="text-sm md:text-base text-zinc-400 leading-relaxed flex-grow min-h-[4.5rem] md:min-h-[5rem]">
           {project.description}
         </p>
 
