@@ -22,14 +22,14 @@ export const projects: Project[] = [
     sourceUrl: '',
   },
   {
-    id: 'promography',
-    title: 'Promography',
+    id: 'elevat8',
+    title: 'Elevat8',
     description:
-      'Find the perfect prompt for any task, from creative writing to complex problem-solving. Join thousands of creators sharing their best AI prompts.',
-    image: '/promography.png',
+      'A gym website that presents training programs, core features, and a polished fitness-focused experience for visitors.',
+    image: '/elevat8.png',
     category: 'Technology Stack',
-    technologies: ['Next.js', 'Tailwind', 'Python'],
-    liveUrl: 'https://promography.vercel.app/',
+    technologies: ['React.js', 'Tailwind CSS'],
+    liveUrl: 'https://elevat8-sigma.vercel.app/',
     sourceUrl: '',
   },
   {
@@ -44,14 +44,14 @@ export const projects: Project[] = [
     sourceUrl: '',
   },
   {
-    id: 'blood-pulse-connect',
-    title: 'Blood Pulse Connect',
+    id: 'docxtract',
+    title: 'DocXtract',
     description:
-      'A full Figma design with prototypes for a blood-donation app that helps donors and recipients connect in minutes. Built around urgency, trust, and removing friction when it matters most.',
-    image: '/bloodpulse.png',
+      'An AI-powered document intelligence platform that transforms PDFs into interactive learning resources through summarization, document chat, comparisons, quizzes, and flashcards, enabling faster understanding and knowledge extraction.',
+    image: '/docxtract.png',
     category: 'Technology Stack',
-    technologies: ['Figma', 'UI/UX', 'Prototyping'],
-    liveUrl: 'https://www.figma.com/design/EwgWWL85cK6T0Xs091esDv/Blood-Pulse-Connect?node-id=0-1&p=f',
+    technologies: ['Python', 'FastAPI', 'Next.js', 'MongoDB'],
+    liveUrl: 'https://doc-xtract-frontend.vercel.app/',
     sourceUrl: '',
   },
   {
@@ -66,14 +66,25 @@ export const projects: Project[] = [
     sourceUrl: '',
   },
   {
-    id: 'docxtract',
-    title: 'DocXtract',
+    id: 'blood-pulse-connect',
+    title: 'Blood Pulse Connect',
     description:
-      'An AI-powered document intelligence platform that transforms PDFs into interactive learning resources through summarization, document chat, comparisons, quizzes, and flashcards, enabling faster understanding and knowledge extraction.',
-    image: '/docxtract.png',
+      'A full Figma design with prototypes for a blood-donation app that helps donors and recipients connect in minutes. Built around urgency, trust, and removing friction when it matters most.',
+    image: '/bloodpulse.png',
     category: 'Technology Stack',
-    technologies: ['Python', 'FastAPI', 'Next.js', 'MongoDB'],
-    liveUrl: 'https://doc-xtract-frontend.vercel.app/',
+    technologies: ['Figma', 'UI/UX', 'Prototyping'],
+    liveUrl: 'https://www.figma.com/design/EwgWWL85cK6T0Xs091esDv/Blood-Pulse-Connect?node-id=0-1&p=f',
+    sourceUrl: '',
+  },
+  {
+    id: 'promography',
+    title: 'Promography',
+    description:
+      'Find the perfect prompt for any task, from creative writing to complex problem-solving. Join thousands of creators sharing their best AI prompts.',
+    image: '/promography.png',
+    category: 'Technology Stack',
+    technologies: ['Next.js', 'Tailwind', 'Python'],
+    liveUrl: 'https://promography.vercel.app/',
     sourceUrl: '',
   },
   {
@@ -88,22 +99,11 @@ export const projects: Project[] = [
     sourceUrl: '',
   },
   {
-    id: 'elevat8',
-    title: 'Elevat8',
-    description:
-      'A gym website that presents training programs, core features, and a polished fitness-focused experience for visitors.',
-    image: '/elevat8.png',
-    category: 'Technology Stack',
-    technologies: ['React.js', 'Tailwind CSS'],
-    liveUrl: 'https://elevat8-sigma.vercel.app/',
-    sourceUrl: '',
-  },
-  {
     id: 'elevat8-design',
     title: 'Elevat8 Design',
     description:
       'A bold gym concept shaped to inspire motion, strength, and focus.',
-    image: '/elevat8design.png',
+    image: '/elevat8.png',
     category: 'Technology Stack',
     technologies: ['Figma', 'UI/UX', 'Prototyping'],
     liveUrl: 'https://www.figma.com/design/5NU6ClAKf500OX8ifW0qPw/Elevat8?node-id=0-1&p=f&t=6T73f2zgFyL0SP4M-0',
