@@ -61,7 +61,7 @@ export const projects: Project[] = [
       'Marketing site for Corefinity, a software studio that helps startups, businesses, and enterprises design, build, and launch web, mobile, and AI products. Clean hero, animated sections, and a service-led layout that converts visitors into real conversations.',
     image: '/corefinity.png',
     category: 'Technology Stack',
-    technologies: ['Next.js', 'React', 'Tailwind CSS', 'Framer Motion'],
+    technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
     liveUrl: 'https://corefinity-website.vercel.app/',
     sourceUrl: '',
   },
