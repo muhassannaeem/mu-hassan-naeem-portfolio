@@ -26,6 +26,27 @@ const itemVariants: Variants = {
   },
 };
 
+const titleVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.15,
+    },
+  },
+};
+
+const titleLineVariants: Variants = {
+  hidden: { opacity: 0, y: 20, filter: 'blur(8px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { duration: 0.65, ease: 'easeOut' },
+  },
+};
+
 const floatVariants: Variants = {
   initial: { opacity: 0, scale: 0.95, y: 10 },
   animate: {
@@ -96,10 +117,13 @@ export default function Hero() {
             </motion.div>
 
             {/* Main Heading */}
-            <motion.div variants={itemVariants} className="space-y-2">
+            <motion.div variants={titleVariants} className="space-y-2">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
-                <span className="block text-white">Building modern</span>
-                <span
+                <motion.span variants={titleLineVariants} className="block text-white">
+                  Building modern
+                </motion.span>
+                <motion.span
+                  variants={titleLineVariants}
                   className="block bg-clip-text text-transparent"
                   style={{
                     background: 'linear-gradient(to right, #06B6D4, #6366F1)',
@@ -109,8 +133,9 @@ export default function Hero() {
                   }}
                 >
                   web, mobile, and
-                </span>
-                <span
+                </motion.span>
+                <motion.span
+                  variants={titleLineVariants}
                   className="block bg-clip-text text-transparent"
                   style={{
                     background: 'linear-gradient(to right, #06B6D4, #6366F1)',
@@ -120,14 +145,16 @@ export default function Hero() {
                   }}
                 >
                   AI-powered
-                </span>
-                <span className="block text-white">applications.</span>
+                </motion.span>
+                <motion.span variants={titleLineVariants} className="block text-white">
+                  applications.
+                </motion.span>
               </h1>
             </motion.div>
 
             {/* Description */}
             <motion.p
-              variants={itemVariants}
+              variants={titleLineVariants}
               className="text-lg text-zinc-400 max-w-lg leading-relaxed"
             >
               Architecture scalable digital solutions with a focus on performance, user

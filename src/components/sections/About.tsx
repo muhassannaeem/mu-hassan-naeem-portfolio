@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import Container from '@/components/ui/Container';
+import SectionHeading from '@/components/ui/SectionHeading';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -131,25 +132,13 @@ export default function About() {
         >
           {/* Left Column */}
           <motion.div className="flex flex-col gap-6 order-2 lg:order-1">
-            {/* Section Label */}
-            <motion.div variants={itemVariants}>
-              <span className="inline-block text-xs font-bold tracking-widest text-purple-400 uppercase">
-                About Me
-              </span>
-            </motion.div>
+            <SectionHeading
+              label="About Me"
+              title="Innovating through\nPrecision & Purpose"
+              labelClassName="text-purple-400"
+            />
 
-            {/* Heading */}
-            <motion.h2
-              variants={itemVariants}
-              className="text-4xl sm:text-5xl lg:text-5xl font-bold leading-tight tracking-tight text-white"
-            >
-              Innovating through
-              <br />
-              Precision & Purpose
-            </motion.h2>
-
-            {/* Description */}
-            <motion.div variants={itemVariants} className="space-y-5">
+            <motion.div variants={itemVariants} className="space-y-5 pt-1">
               <p className="text-base md:text-lg text-zinc-400 leading-relaxed">
                 I am a Software Engineer driven by the challenge of creating
                 high-impact digital products. With expertise spanning from low-level

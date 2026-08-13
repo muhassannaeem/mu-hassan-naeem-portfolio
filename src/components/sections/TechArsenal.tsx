@@ -11,6 +11,7 @@ import {
   Zap,
 } from 'lucide-react';
 import Container from '@/components/ui/Container';
+import SectionHeading from '@/components/ui/SectionHeading';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -161,30 +162,14 @@ export default function TechArsenal() {
           viewport={{ once: true, margin: '-100px' }}
         >
           {/* Header */}
-          <motion.div className="flex flex-col gap-3 text-center">
-            {/* Section Label */}
-            <motion.div variants={itemVariants}>
-              <span className="inline-block text-xs font-bold tracking-widest text-cyan-400 uppercase">
-                My Expertise
-              </span>
-            </motion.div>
-
-            {/* Heading */}
-            <motion.h2
-              variants={itemVariants}
-              className="text-4xl sm:text-5xl lg:text-5xl font-bold leading-tight tracking-tight text-white max-w-2xl mx-auto"
-            >
-              Technical Arsenal
-            </motion.h2>
-
-            {/* Subtitle */}
-            <motion.p
-              variants={itemVariants}
-              className="text-base md:text-lg text-zinc-400 max-w-xl mx-auto"
-            >
-              The tools and technologies I use to bring ideas to life.
-            </motion.p>
-          </motion.div>
+          <SectionHeading
+            align="center"
+            label="My Expertise"
+            title="Technical Arsenal"
+            subtitle="The tools and technologies I use to bring ideas to life."
+            labelClassName="text-cyan-400"
+            subtitleClassName="max-w-xl mx-auto"
+          />
 
           {/* Tech Cards Grid */}
           <motion.div

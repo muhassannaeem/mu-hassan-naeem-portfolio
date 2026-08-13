@@ -6,6 +6,7 @@ import { ExternalLink } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import { featuredProjects, type Project } from '@/config/projects';
 import ProjectCard from '@/components/sections/ProjectCard';
+import SectionHeading from '@/components/ui/SectionHeading';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -57,22 +58,11 @@ export default function FeaturedProjects() {
         >
           {/* Header */}
           <motion.div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-6">
-            <motion.div className="flex flex-col gap-3">
-              {/* Section Label */}
-              <motion.div variants={itemVariants}>
-                <span className="inline-block text-xs font-bold tracking-widest text-indigo-400 uppercase">
-                  Selected Work
-                </span>
-              </motion.div>
-
-              {/* Heading */}
-              <motion.h2
-                variants={itemVariants}
-                className="text-4xl sm:text-5xl lg:text-5xl font-bold leading-tight tracking-tight text-white"
-              >
-                Featured Projects
-              </motion.h2>
-            </motion.div>
+            <SectionHeading
+              label="Selected Work"
+              title="Featured Projects"
+              labelClassName="text-indigo-400"
+            />
 
             {/* View All Link */}
             <motion.a

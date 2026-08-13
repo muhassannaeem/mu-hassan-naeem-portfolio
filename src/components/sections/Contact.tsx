@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Mail, MapPin, Send } from 'lucide-react';
 import Container from '@/components/ui/Container';
+import SectionHeading from '@/components/ui/SectionHeading';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -104,31 +105,18 @@ export default function Contact() {
         >
           {/* Left Column - CTA Content */}
           <motion.div className="flex flex-col gap-6">
-            {/* Heading */}
-            <motion.h2
-              variants={itemVariants}
-              className="text-4xl sm:text-5xl lg:text-5xl font-bold leading-tight tracking-tight"
-            >
-              <span className="block text-white">Let&apos;s Build</span>
-              <span className="block">
-                Something{' '}
-                <span
-                  style={{
-                    background: 'linear-gradient(to right, #06B6D4, #6366F1)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
-                >
-                  Great.
-                </span>
-              </span>
-            </motion.h2>
+            <SectionHeading
+              label="Contact"
+              title="Let&apos;s Build\nSomething Great."
+              subtitle="Hand on! I&apos;m currently available for freelance projects and full-time opportunities. Let&apos;s talk about what we can achieve together."
+              labelClassName="text-indigo-400"
+              subtitleClassName="max-w-md"
+            />
 
-            {/* Description */}
+            {/* Contact Info */}
             <motion.p
               variants={itemVariants}
-              className="text-base md:text-lg text-zinc-400 leading-relaxed max-w-md"
+              className="sr-only"
             >
               Hand on! I&apos;m currently available for freelance projects and full-time opportunities.
               Let&apos;s talk about what we can achieve together.

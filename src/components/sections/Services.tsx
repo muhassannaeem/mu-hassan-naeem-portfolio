@@ -9,6 +9,7 @@ import {
   Palette,
 } from 'lucide-react';
 import Container from '@/components/ui/Container';
+import SectionHeading from '@/components/ui/SectionHeading';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -147,23 +148,14 @@ export default function ServicesOffered() {
           viewport={{ once: true, margin: '-100px' }}
         >
           {/* Header */}
-          <motion.div className="flex flex-col gap-3 text-center">
-            {/* Heading */}
-            <motion.h2
-              variants={itemVariants}
-              className="text-4xl sm:text-5xl lg:text-5xl font-bold leading-tight tracking-tight text-white"
-            >
-              Services Offered
-            </motion.h2>
-
-            {/* Subtitle */}
-            <motion.p
-              variants={itemVariants}
-              className="text-base md:text-lg text-zinc-400 max-w-2xl mx-auto"
-            >
-              Tailored solutions for your digital transformation.
-            </motion.p>
-          </motion.div>
+          <SectionHeading
+            align="center"
+            label="What I Do"
+            title="Services Offered"
+            subtitle="Tailored solutions for your digital transformation."
+            labelClassName="text-purple-400"
+            subtitleClassName="max-w-2xl mx-auto"
+          />
 
           {/* Services Grid */}
           <motion.div
