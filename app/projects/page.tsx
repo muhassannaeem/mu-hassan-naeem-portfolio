@@ -9,14 +9,14 @@ export default function ProjectsPage() {
     <main className="flex flex-col w-full bg-black text-white min-h-screen">
       <Navbar />
 
-      <section className="relative w-full pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden">
+      <section className="relative w-full pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute top-1/4 left-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
         </div>
 
         <Container className="relative z-10">
-          <div className="flex flex-col gap-4 mb-10 md:mb-14 max-w-3xl">
+          <div className="flex flex-col gap-4 mb-8 md:mb-10 max-w-3xl">
             <span className="inline-block text-xs font-bold tracking-widest text-indigo-400 uppercase">
               All Projects
             </span>
@@ -28,7 +28,7 @@ export default function ProjectsPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7">
             {projects.map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
             ))}

@@ -127,7 +127,7 @@ export default function ServicesOffered() {
   return (
     <section
       id="services"
-      className="relative w-full py-20 md:py-32 flex items-center justify-center overflow-hidden"
+      className="relative w-full py-16 md:py-24 flex items-center justify-center overflow-hidden"
     >
       {/* Background gradient elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -140,7 +140,7 @@ export default function ServicesOffered() {
       {/* Main content */}
       <Container className="relative z-10">
         <motion.div
-          className="flex flex-col gap-12 md:gap-16"
+          className="flex flex-col gap-10 md:gap-12"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

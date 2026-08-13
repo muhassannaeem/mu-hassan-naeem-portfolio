@@ -41,7 +41,7 @@ function SocialIcon({ icon }: SocialIconProps) {
 
 export default function Footer() {
   return (
-    <footer className="relative w-full py-16 md:py-20 flex items-center justify-center border-t border-white/10">
+    <footer className="relative w-full py-12 md:py-16 flex items-center justify-center border-t border-white/10">
       {/* Main content */}
       <Container>
         <motion.div
@@ -49,7 +49,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: '-100px' }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-8 md:mb-10"
         >
           {/* Left - Company Info */}
           <motion.div

@@ -106,7 +106,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative w-full py-20 md:py-32 flex items-center justify-center overflow-hidden"
+      className="relative w-full py-16 md:py-24 flex items-center justify-center overflow-hidden"
     >
       {/* Background gradient elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -119,7 +119,7 @@ export default function About() {
       {/* Main content */}
       <Container className="relative z-10">
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
