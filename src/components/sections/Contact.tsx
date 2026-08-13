@@ -83,7 +83,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative w-full py-16 md:py-24 flex items-center justify-center overflow-hidden"
+      className="relative w-full py-12 md:py-20 flex items-center justify-center overflow-hidden"
     >
       {/* Background gradient elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -96,14 +96,14 @@ export default function Contact() {
       {/* Main content */}
       <Container className="relative z-10">
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
         >
           {/* Left Column - CTA Content */}
-          <motion.div className="flex flex-col gap-8">
+          <motion.div className="flex flex-col gap-6">
             {/* Heading */}
             <motion.h2
               variants={itemVariants}

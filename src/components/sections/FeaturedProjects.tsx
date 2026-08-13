@@ -36,7 +36,7 @@ export default function FeaturedProjects() {
   return (
     <section
       id="work"
-      className="relative w-full py-16 md:py-24 flex items-center justify-center overflow-hidden"
+      className="relative w-full py-12 md:py-20 flex items-center justify-center overflow-hidden"
     >
       {/* Background gradient elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -49,15 +49,15 @@ export default function FeaturedProjects() {
       {/* Main content */}
       <Container className="relative z-10">
         <motion.div
-          className="flex flex-col gap-10 md:gap-12"
+          className="flex flex-col gap-8 md:gap-10"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
         >
           {/* Header */}
-          <motion.div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <motion.div className="flex flex-col gap-4">
+          <motion.div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-6">
+            <motion.div className="flex flex-col gap-3">
               {/* Section Label */}
               <motion.div variants={itemVariants}>
                 <span className="inline-block text-xs font-bold tracking-widest text-indigo-400 uppercase">

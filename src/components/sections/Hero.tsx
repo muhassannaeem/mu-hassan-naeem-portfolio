@@ -26,6 +26,16 @@ const itemVariants: Variants = {
   },
 };
 
+const floatVariants: Variants = {
+  initial: { opacity: 0, scale: 0.95, y: 10 },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: 'easeOut' },
+  },
+};
+
 export default function Hero() {
   const scrollToContact = () => {
     const element = document.querySelector('#contact');
@@ -46,15 +56,23 @@ export default function Hero() {
       {/* Background gradient elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {/* Top right glow */}
-        <div className="absolute top-20 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl" />
+        <motion.div
+          className="absolute top-20 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl"
+          animate={{ x: [0, -18, 0], y: [0, 14, 0], scale: [1, 1.08, 1], opacity: [0.45, 0.8, 0.45] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        />
         {/* Bottom left glow */}
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+        <motion.div
+          className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"
+          animate={{ x: [0, 16, 0], y: [0, -12, 0], scale: [1, 1.06, 1], opacity: [0.4, 0.75, 0.4] }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+        />
       </div>
 
       {/* Main content */}
-      <Container className="relative z-10 py-12 md:py-16">
+      <Container className="relative z-10 py-8 md:py-12">
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center min-h-[calc(100vh-120px)]"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[calc(100vh-120px)]"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -120,7 +138,7 @@ export default function Hero() {
             {/* CTA Buttons */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4 pt-4"
+              className="flex flex-col sm:flex-row gap-4 pt-2"
             >
               {/* Primary Button */}
               <motion.button
@@ -155,17 +173,20 @@ export default function Hero() {
           >
             {/* Image Card */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
+              variants={floatVariants}
+              initial="initial"
+              animate="animate"
+              whileHover={{ y: -8, rotate: -1 }}
               className="relative w-full mt-8 max-w-xs lg:max-w-sm"
             >
               {/* Glow effect behind image */}
-              <div
+              <motion.div
                 className="absolute inset-0 rounded-3xl blur-3xl"
                 style={{
                   background: 'linear-gradient(to bottom-right, rgba(6, 182, 212, 0.2), rgba(99, 102, 241, 0.1))',
                 }}
+                animate={{ opacity: [0.35, 0.7, 0.35], scale: [1, 1.05, 1] }}
+                transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
               />
 
               {/* Image container - clean and sleek */}
@@ -184,9 +205,10 @@ export default function Hero() {
 
               {/* Floating Info Card */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 20, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.6, ease: 'easeOut', delay: 0.6 }}
+                whileHover={{ y: -4, scale: 1.02 }}
                 className="absolute -bottom-8 -left-6 md:-left-12 lg:-left-16 bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6 shadow-xl"
               >
                 <div className="flex items-center gap-3">

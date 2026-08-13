@@ -106,12 +106,16 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative w-full py-16 md:py-24 flex items-center justify-center overflow-hidden"
+      className="relative w-full py-12 md:py-20 flex items-center justify-center overflow-hidden"
     >
       {/* Background gradient elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {/* Top left glow */}
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+           <motion.div
+             className="absolute top-1/4 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"
+             animate={{ x: [0, 14, 0], y: [0, -12, 0], scale: [1, 1.08, 1], opacity: [0.45, 0.75, 0.45] }}
+             transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut' }}
+           />
         {/* Bottom right glow */}
         <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
       </div>
@@ -119,14 +123,14 @@ export default function About() {
       {/* Main content */}
       <Container className="relative z-10">
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
         >
           {/* Left Column */}
-          <motion.div className="flex flex-col gap-8 order-2 lg:order-1">
+          <motion.div className="flex flex-col gap-6 order-2 lg:order-1">
             {/* Section Label */}
             <motion.div variants={itemVariants}>
               <span className="inline-block text-xs font-bold tracking-widest text-purple-400 uppercase">
@@ -145,7 +149,7 @@ export default function About() {
             </motion.h2>
 
             {/* Description */}
-            <motion.div variants={itemVariants} className="space-y-6">
+            <motion.div variants={itemVariants} className="space-y-5">
               <p className="text-base md:text-lg text-zinc-400 leading-relaxed">
                 I am a Software Engineer driven by the challenge of creating
                 high-impact digital products. With expertise spanning from low-level
