@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Container from '@/components/ui/Container';
 
@@ -75,13 +76,13 @@ export default function Footer() {
             <h4 className="text-sm font-bold text-white uppercase tracking-widest">Navigation</h4>
             <div className="flex flex-col gap-2">
               {footerLinks.navigation.map((link) => (
-                <a
+                <Link
                   key={link.label}
-                  href={link.href}
+                  href={`/${link.href}`}
                   className="text-sm text-zinc-400 hover:text-white transition-colors"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </div>
           </motion.div>
