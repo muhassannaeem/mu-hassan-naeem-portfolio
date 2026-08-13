@@ -56,7 +56,7 @@ export const projects: Project[] = [
   },
   {
     id: 'corefinity',
-    title: 'Corefinity, Studio Website',
+    title: 'Corefinity Studio',
     description:
       'Marketing site for Corefinity, a software studio that helps startups, businesses, and enterprises design, build, and launch web, mobile, and AI products. Clean hero, animated sections, and a service-led layout that converts visitors into real conversations.',
     image: '/corefinity.png',
@@ -96,6 +96,17 @@ export const projects: Project[] = [
     category: 'Technology Stack',
     technologies: ['React.js', 'Tailwind CSS'],
     liveUrl: 'https://elevat8-sigma.vercel.app/',
+    sourceUrl: '',
+  },
+  {
+    id: 'elevat8-design',
+    title: 'Elevat8 Design',
+    description:
+      'A bold gym concept shaped to inspire motion, strength, and focus.',
+    image: '/elevat8design.png',
+    category: 'Technology Stack',
+    technologies: ['Figma', 'UI/UX', 'Prototyping'],
+    liveUrl: 'https://www.figma.com/design/5NU6ClAKf500OX8ifW0qPw/Elevat8?node-id=0-1&p=f&t=6T73f2zgFyL0SP4M-0',
     sourceUrl: '',
   },
 ];
