@@ -87,6 +87,17 @@ export const projects: Project[] = [
     liveUrl: 'https://apex-gym-red.vercel.app/',
     sourceUrl: '',
   },
+  {
+    id: 'elevat8',
+    title: 'Elevat8',
+    description:
+      'A gym website that presents training programs, core features, and a polished fitness-focused experience for visitors.',
+    image: '/elevat8.png',
+    category: 'Technology Stack',
+    technologies: ['React.js', 'Tailwind CSS'],
+    liveUrl: 'https://elevat8-sigma.vercel.app/',
+    sourceUrl: '',
+  },
 ];
 
 export const featuredProjects = projects.slice(0, 6);
