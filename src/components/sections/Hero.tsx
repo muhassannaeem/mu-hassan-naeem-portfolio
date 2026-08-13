@@ -42,7 +42,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full min-h-screen pt-20 flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative w-full min-h-screen pt-20 flex items-center justify-center overflow-hidden">
       {/* Background gradient elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {/* Top right glow */}

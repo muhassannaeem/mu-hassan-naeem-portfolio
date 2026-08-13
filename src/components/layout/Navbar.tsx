@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Menu, X, Download, ArrowRight } from 'lucide-react';
 import Container from '@/components/ui/Container';
@@ -12,6 +14,8 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMounted] = useState(true);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,10 +28,16 @@ export default function Navbar() {
 
   const handleScrollToSection = (sectionId: string) => {
     setIsMobileMenuOpen(false);
-    const element = document.querySelector(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+
+    if (pathname === '/') {
+      const element = document.querySelector(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+      return;
     }
+
+    router.push(`/${sectionId}`);
   };
 
   const handleDownloadCV = () => {
@@ -69,16 +79,17 @@ export default function Navbar() {
             className="flex items-center gap-3 flex-1"
             whileHover={{ scale: 1.02 }}
           >
-            {/* Logo */}
-            <Image
-              src="/logo2.png"
-              alt="Logo"
-              width={140}
-              height={140}
-              loading="eager"
-              priority
-              className="flex-shrink-0"
-            />
+            <Link href="/#hero" aria-label="Go to hero section" className="flex-shrink-0">
+              <Image
+                src="/logo2.png"
+                alt="Logo"
+                width={140}
+                height={140}
+                loading="eager"
+                priority
+                className="flex-shrink-0"
+              />
+            </Link>
           </motion.div>
 
           {/* Center Navigation - Desktop */}
