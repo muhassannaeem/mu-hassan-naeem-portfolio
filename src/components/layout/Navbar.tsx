@@ -87,7 +87,6 @@ export default function Navbar() {
               <motion.button
                 key={link}
                 onClick={() => handleScrollToSection(`#${link.toLowerCase()}`)}
-                whileHover={{ color: '#ffffff' }}
                 className="text-sm text-zinc-400 hover:text-white transition-colors"
               >
                 {link}

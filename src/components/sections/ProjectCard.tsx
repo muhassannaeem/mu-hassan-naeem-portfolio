@@ -21,6 +21,8 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, index }: ProjectCardProps) {
+  const isFirstProject = index === 0;
+
   return (
     <motion.div
       variants={cardVariants}
@@ -34,6 +36,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           alt={project.title}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          loading={isFirstProject ? 'eager' : 'lazy'}
+          priority={isFirstProject}
           className="object-cover"
           quality={100}
         />
