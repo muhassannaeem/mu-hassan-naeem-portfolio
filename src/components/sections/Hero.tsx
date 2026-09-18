@@ -3,7 +3,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion, Variants } from 'framer-motion';
-import { Zap } from 'lucide-react';
 import Container from '@/components/ui/Container';
 
 const containerVariants: Variants = {
@@ -193,22 +192,22 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Image and Info Card */}
+          {/* Right Column - Profile Image */}
           <motion.div
             variants={itemVariants}
-            className="relative flex items-center justify-center"
+            className="relative flex items-center justify-center lg:translate-x-8"
           >
-            {/* Image Card */}
+            {/* Circular profile image */}
             <motion.div
               variants={floatVariants}
               initial="initial"
               animate="animate"
               whileHover={{ y: -8, rotate: -1 }}
-              className="relative w-full mt-8 max-w-xs lg:max-w-sm"
+              className="relative w-full mt-8 -translate-y-4 max-w-xs lg:max-w-sm lg:-translate-y-6"
             >
               {/* Glow effect behind image */}
               <motion.div
-                className="absolute inset-0 rounded-3xl blur-3xl"
+                className="absolute inset-0 rounded-full blur-3xl"
                 style={{
                   background: 'linear-gradient(to bottom-right, rgba(6, 182, 212, 0.2), rgba(99, 102, 241, 0.1))',
                 }}
@@ -217,55 +216,21 @@ export default function Hero() {
               />
 
               {/* Image container - clean and sleek */}
-              <div className="relative w-full rounded-3xl overflow-hidden border border-white/10" style={{ aspectRatio: '3/4' }}>
+              <div className="relative w-full aspect-square rounded-full overflow-hidden border border-white/10">
                 {/* Profile Image */}
                 <Image
                   src="/Hassan.png"
                   alt="Hassan"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover object-center"
+                  className="object-cover object-[center_25%]"
                   priority
                   quality={100}
                 />
               </div>
-
-              {/* Floating Info Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20, scale: 0.96 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.6 }}
-                whileHover={{ y: -4, scale: 1.02 }}
-                className="absolute -bottom-8 -left-6 md:-left-12 lg:-left-16 bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6 shadow-xl"
-              >
-                <div className="flex items-center gap-3">
-                  <div
-                    className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
-                    style={{
-                      background: 'linear-gradient(to bottom-right, #06B6D4, #6366F1)',
-                    }}
-                  >
-                    <Zap size={24} className="text-white" />
-                  </div>
-                  <div>
-                      <div
-                        className="text-2xl font-bold"
-                        style={{
-                          background: 'linear-gradient(to right, #6366F1, #06B6D4)',
-                          WebkitBackgroundClip: 'text',
-                          WebkitTextFillColor: 'transparent',
-                          backgroundClip: 'text',
-                        }}
-                      >
-                        10+
-                      </div>
-                    <div className="text-xs text-zinc-400">Live Projects</div>
-                  </div>
-                </div>
               </motion.div>
             </motion.div>
           </motion.div>
-        </motion.div>
       </Container>
     </section>
   );
