@@ -111,7 +111,7 @@ export default function Hero() {
                     background: 'linear-gradient(to right, #06B6D4, #6366F1)',
                   }}
                 />
-                <span className="text-xs font-medium text-white">Software Engineer</span>
+                <span className="text-xs font-medium text-white">Digital Product Expert</span>
               </div>
             </motion.div>
 
@@ -119,34 +119,44 @@ export default function Hero() {
             <motion.div variants={titleVariants} className="space-y-2">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
                 <motion.span variants={titleLineVariants} className="block text-white">
-                  Building modern
-                </motion.span>
-                <motion.span
-                  variants={titleLineVariants}
-                  className="block bg-clip-text text-transparent"
-                  style={{
-                    background: 'linear-gradient(to right, #06B6D4, #6366F1)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
-                >
-                  web, mobile, and
-                </motion.span>
-                <motion.span
-                  variants={titleLineVariants}
-                  className="block bg-clip-text text-transparent"
-                  style={{
-                    background: 'linear-gradient(to right, #06B6D4, #6366F1)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
-                >
-                  AI-powered
+                  A{' '}
+                  <span
+                    className="bg-clip-text text-transparent"
+                    style={{
+                      background: 'linear-gradient(to right, #06B6D4, #6366F1)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}
+                  >
+                    digital solution
+                  </span>
                 </motion.span>
                 <motion.span variants={titleLineVariants} className="block text-white">
-                  applications.
+                  that actually{' '}
+                  <span
+                    className="bg-clip-text text-transparent"
+                    style={{
+                      background: 'linear-gradient(to right, #06B6D4, #6366F1)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}
+                  >
+                    wins
+                  </span>{' '}
+                  you{' '}
+                  <span
+                    className="bg-clip-text text-transparent"
+                    style={{
+                      background: 'linear-gradient(to right, #06B6D4, #6366F1)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}
+                  >
+                    customers.
+                  </span>
                 </motion.span>
               </h1>
             </motion.div>
@@ -156,9 +166,7 @@ export default function Hero() {
               variants={titleLineVariants}
               className="text-lg text-zinc-400 max-w-lg leading-relaxed"
             >
-              Architecture scalable digital solutions with a focus on performance, user
-              experience, and cutting-edge intelligence. Transforming complex problems into
-              elegant code.
+              We build websites, apps, and AI-powered systems that help businesses attract more customers, automate the busywork, and scale without adding overhead.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -223,7 +231,7 @@ export default function Hero() {
                   alt="Hassan"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover object-[center_25%]"
+                  className="translate-y-9 translate-x-4 scale-120 object-cover object-[center_25%]"
                   priority
                   quality={100}
                 />
