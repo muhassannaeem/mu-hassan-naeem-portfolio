@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Menu, X, Download, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import Container from '@/components/ui/Container';
 
 const navLinks = ['About', 'Work', 'Services', 'Contact'];
@@ -40,15 +40,6 @@ export default function Navbar() {
     router.push(`/${sectionId}`);
   };
 
-  const handleDownloadCV = () => {
-    const link = document.createElement('a');
-    link.href = '/MuhammadHassanNaeem_Resume_July2026.pdf';
-    link.download = 'MuhammadHassanNaeem_Resume_July2026.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
     <>
       {/* Fixed navbar background effect */}
@@ -81,10 +72,10 @@ export default function Navbar() {
           >
             <Link href="/#hero" aria-label="Go to hero section" className="flex-shrink-0">
               <Image
-                src="/logo2.png"
+                src="/logox.png"
                 alt="Logo"
-                width={140}
-                height={140}
+                width={160}
+                height={160}
                 loading="eager"
                 priority
                 className="flex-shrink-0"
@@ -109,17 +100,6 @@ export default function Navbar() {
           <div className="flex items-center gap-3 justify-end flex-1">
             {/* Desktop Buttons */}
             <div className="hidden sm:flex gap-3">
-              {/* Download CV Button */}
-              <motion.button
-                onClick={handleDownloadCV}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-4 py-2 rounded-full border border-white/20 text-white text-sm font-medium flex items-center gap-2 hover:border-white/40 bg-white/5 hover:bg-white/10 transition-all"
-              >
-                <Download size={16} />
-                <span className="hidden sm:inline">Download CV</span>
-              </motion.button>
-
               {/* Hire Me Button */}
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -172,16 +152,6 @@ export default function Navbar() {
 
           {/* Mobile Buttons */}
           <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-white/10">
-            <motion.button
-              onClick={handleDownloadCV}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full px-4 py-2 rounded-full border border-white/20 text-white text-sm font-medium flex items-center justify-center gap-2 hover:border-white/40 bg-white/5"
-            >
-              <Download size={16} />
-              Download CV
-            </motion.button>
-
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
