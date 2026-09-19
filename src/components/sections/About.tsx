@@ -134,7 +134,7 @@ export default function About() {
           <motion.div className="flex flex-col gap-6 order-2 lg:order-1">
             <SectionHeading
               label="About Me"
-              title="Innovating through\nPrecision & Purpose"
+              title="Innovating through Precision & Purpose"
               labelClassName="text-purple-400"
             />
 

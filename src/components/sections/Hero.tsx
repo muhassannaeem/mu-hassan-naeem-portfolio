@@ -185,7 +185,7 @@ export default function Hero() {
                   boxShadow: '0 0 20px rgba(6, 182, 212, 0.5)',
                 }}
               >
-                View Projects
+                View Case Studies
               </motion.button>
 
               {/* Secondary Button */}

@@ -111,7 +111,7 @@ export default function Navbar() {
                   boxShadow: '0 0 20px rgba(6, 182, 212, 0.5)',
                 }}
               >
-                <span className="hidden sm:inline">Hire Me</span>
+                <span className="hidden sm:inline">Let&apos;s Talk</span>
                 <span className="sm:hidden">Talk</span>
                 <ArrowRight size={16} />
               </motion.button>
