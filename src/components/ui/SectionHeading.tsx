@@ -35,7 +35,7 @@ const titleLineVariants: Variants = {
 
 interface SectionHeadingProps {
   label: string;
-  title: string;
+  title: React.ReactNode;
   subtitle?: string;
   align?: 'left' | 'center';
   labelClassName?: string;
@@ -52,12 +52,12 @@ export default function SectionHeading({
   titleClassName = '',
   subtitleClassName = '',
 }: SectionHeadingProps) {
-  const lines = title.split('\n');
+  const lines = typeof title === 'string' ? title.split('\n') : [title];
 
   return (
     <motion.div
       variants={headingVariants}
-      className={`flex flex-col gap-3 ${align === 'center' ? 'items-center text-center' : ''}`}
+      className={`flex flex-col gap-4 ${align === 'center' ? 'items-center text-center' : ''}`}
     >
       <motion.div variants={textVariants}>
         <span className={`inline-block text-xs font-bold tracking-widest uppercase ${labelClassName}`}>

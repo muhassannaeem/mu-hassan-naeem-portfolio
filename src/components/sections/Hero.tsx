@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { motion, Variants } from 'framer-motion';
+import { motion, useInView, Variants } from 'framer-motion';
 import Container from '@/components/ui/Container';
 
 const containerVariants: Variants = {
@@ -56,6 +56,77 @@ const floatVariants: Variants = {
   },
 };
 
+interface Stat {
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  label: string;
+  gradient: string;
+}
+
+const stats: Stat[] = [
+  {
+    value: 15,
+    suffix: '+',
+    label: 'Projects Delivered',
+    gradient: 'from-purple-400 via-purple-500 to-indigo-500',
+  },
+  {
+    value: 10,
+    suffix: '+',
+    label: 'Happy Clients',
+    gradient: 'from-cyan-400 via-cyan-500 to-indigo-500',
+  },
+  {
+    value: 100,
+    suffix: '%',
+    label: 'Client Satisfaction',
+    gradient: 'from-emerald-400 via-green-500 to-emerald-600',
+  },
+  {
+    value: 50,
+    prefix: '$',
+    suffix: 'K+',
+    label: 'Revenue Generated',
+    gradient: 'from-amber-300 via-orange-400 to-orange-500',
+  },
+];
+
+function CountUp({ stat }: { stat: Stat }) {
+  const [count, setCount] = useState(0);
+  const countRef = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(countRef, { once: true, margin: '-100px' });
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    const duration = 1200;
+    const startTime = performance.now();
+    let animationFrame = 0;
+
+    const animate = (currentTime: number) => {
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.round(easedProgress * stat.value));
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [isInView, stat.value]);
+
+  return (
+    <span ref={countRef}>
+      {stat.prefix}
+      {count}
+      {stat.suffix}
+    </span>
+  );
+}
+
 export default function Hero() {
   const scrollToContact = () => {
     const element = document.querySelector('#contact');
@@ -72,7 +143,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="relative w-full min-h-screen pt-20 flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative w-full min-h-[calc(100vh-96px)] pt-20 flex items-center justify-center overflow-hidden">
       {/* Background gradient elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {/* Top right glow */}
@@ -92,7 +163,7 @@ export default function Hero() {
       {/* Main content */}
       <Container className="relative z-10 py-8 md:py-12">
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[calc(100vh-120px)]"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[calc(100vh-216px)]"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -197,6 +268,26 @@ export default function Hero() {
               >
                 Let&apos;s Talk
               </motion.button>
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="flex flex-col gap-6 pt-2">
+              <div className="grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-4 sm:gap-4">
+                {stats.map((stat) => (
+                  <motion.div
+                    key={stat.label}
+                    whileHover={{ y: -3 }}
+                    transition={{ duration: 0.2 }}
+                    className="group flex min-w-0 flex-col items-center gap-2 text-center"
+                  >
+                    <div className={`bg-gradient-to-br ${stat.gradient} bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl`}>
+                      <CountUp stat={stat} />
+                    </div>
+                    <p className="max-w-[8rem] text-xs uppercase tracking-wider text-zinc-500">
+                      {stat.label}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>
           </motion.div>
 

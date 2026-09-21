@@ -128,7 +128,7 @@ export default function ServicesOffered() {
   return (
     <section
       id="services"
-      className="relative w-full py-12 md:py-20 flex items-center justify-center overflow-hidden"
+      className="relative w-full py-16 flex items-center justify-center overflow-hidden"
     >
       {/* Background gradient elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -141,7 +141,7 @@ export default function ServicesOffered() {
       {/* Main content */}
       <Container className="relative z-10">
         <motion.div
-          className="flex flex-col gap-8 md:gap-10"
+          className="flex flex-col gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -159,7 +159,7 @@ export default function ServicesOffered() {
 
           {/* Services Grid */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
             variants={containerVariants}
           >
             {services.map((service, index) => (

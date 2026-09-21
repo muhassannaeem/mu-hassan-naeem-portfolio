@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
-import { Code2, Palette, Rocket, Search } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import SectionHeading from '@/components/ui/SectionHeading';
 
@@ -29,39 +28,44 @@ const itemVariants: Variants = {
 const processSteps = [
   {
     number: '01',
-    icon: Search,
-    border: 'hover:border-purple-300',
-    numberColor: 'text-purple-500',
-    iconColor: 'bg-purple-100 text-purple-500',
-    title: 'Discover',
-    description: 'We learn your business, goals, and what success looks like.',
+    accent: 'text-purple-500',
+    dot: 'bg-purple-500',
+    halo: 'group-hover:ring-purple-500/25',
+    defaultHalo: true,
+    stage: 'STAGE 01',
+    title: 'Discover the Opportunity',
+    description:
+      'We examine your business, audience, and market to understand where growth is being lost and where the strongest opportunities lie.',
   },
   {
     number: '02',
-    icon: Palette,
-    border: 'hover:border-blue-300',
-    numberColor: 'text-blue-500',
-    iconColor: 'bg-blue-100 text-blue-500',
-    title: 'Design',
-    description: 'We map out the experience and visual direction before writing code.',
+    accent: 'text-blue-500',
+    dot: 'bg-blue-500',
+    halo: 'group-hover:ring-blue-500/25',
+    stage: 'STAGE 02',
+    title: 'Design the Blueprint',
+    description:
+      'We map the user journey, technical architecture, and visual direction needed to turn strategy into a clear, buildable plan.',
   },
   {
     number: '03',
-    icon: Code2,
-    border: 'hover:border-cyan-300',
-    numberColor: 'text-cyan-500',
-    iconColor: 'bg-cyan-100 text-cyan-500',
-    title: 'Build',
-    description: 'We develop, test, and refine, keeping you in the loop the whole way.',
+    accent: 'text-cyan-500',
+    dot: 'bg-cyan-500',
+    halo: 'group-hover:ring-cyan-500/25',
+    stage: 'STAGE 03',
+    title: 'Build the System',
+    description:
+      'We develop, test, and refine the product, integrating the tools and AI-driven automations that keep it running smoothly.',
   },
   {
     number: '04',
-    icon: Rocket,
-    border: 'hover:border-orange-300',
-    numberColor: 'text-orange-500',
-    iconColor: 'bg-orange-100 text-orange-500',
-    title: 'Launch & Support',
-    description: 'We ship it, then stick around to make sure it performs.',
+    accent: 'text-orange-500',
+    dot: 'bg-orange-500',
+    halo: 'group-hover:ring-orange-500/25',
+    stage: 'STAGE 04',
+    title: 'Launch & Scale',
+    description:
+      'We deploy to production, connect performance tracking, and stay on to ensure it keeps performing as your business grows.',
   },
 ];
 
@@ -69,7 +73,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative flex w-full items-center justify-center overflow-hidden bg-white py-12 text-zinc-900 md:py-20"
+      className="relative flex w-full items-center justify-center overflow-hidden bg-white py-16 text-zinc-900"
     >
       {/* Background gradient elements */}
       <div className="pointer-events-none absolute inset-0 z-0">
@@ -95,7 +99,34 @@ export default function About() {
           <motion.div className="flex flex-col gap-6">
             <SectionHeading
               label="About Us"
-              title="Innovating through Precision & Purpose"
+              title={
+                <>
+                  Innovating through{' '}
+                  <span
+                    className="bg-clip-text text-transparent"
+                    style={{
+                      background: 'linear-gradient(to right, #06B6D4, #6366F1)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}
+                  >
+                    Precision
+                  </span>{' '}
+                  &{' '}
+                  <span
+                    className="bg-clip-text text-transparent"
+                    style={{
+                      background: 'linear-gradient(to right, #06B6D4, #6366F1)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}
+                  >
+                    Purpose
+                  </span>
+                </>
+              }
               labelClassName="text-purple-400"
               titleClassName="text-zinc-900"
             />
@@ -112,39 +143,27 @@ export default function About() {
               </p>
             </motion.div>
 
-            <div className="mt-6 border-t border-zinc-200 pt-8 md:mt-8 md:pt-10">
-              <div className="mb-6">
-                <span className="text-xs font-bold uppercase tracking-widest text-purple-400">
-                  How We Work
-                </span>
-              </div>
-
-              <ol className="flex flex-col gap-4 lg:flex-row lg:gap-0">
-                {processSteps.map((step, index) => (
-                  <li
-                    key={step.number}
-                    className={`relative flex-1 ${
-                      index < processSteps.length - 1
-                        ? 'after:absolute after:left-5 after:top-full after:h-4 after:w-px after:bg-purple-500/30 lg:after:left-1/2 lg:after:top-1/2 lg:after:h-px lg:after:w-full'
-                        : ''
-                    }`}
-                  >
-                    <div className={`group relative z-10 h-full rounded-2xl border border-zinc-200 bg-zinc-50 p-6 pt-12 shadow-[0_8px_24px_rgba(24,24,27,0.08)] transition-all duration-300 hover:-translate-y-1 ${step.border} hover:shadow-[0_16px_32px_rgba(24,24,27,0.14)] md:p-7 md:pt-12 lg:mr-4`}>
-                      <span className={`absolute left-5 top-5 text-2xl font-extrabold tracking-tight ${step.numberColor} md:left-6 md:top-6 md:text-3xl`}>
-                        {step.number}
-                      </span>
-                      <div className={`mb-5 flex h-11 w-11 items-center justify-center rounded-full ${step.iconColor}`}>
-                        <step.icon size={21} strokeWidth={2} aria-hidden="true" />
-                      </div>
-                      <h3 className="text-lg font-semibold text-zinc-900">{step.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-zinc-600">
-                        {step.description}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </div>
+            <ol className="relative mt-8 grid grid-cols-1 gap-8 pt-8 md:grid-cols-2 md:gap-x-8 lg:grid-cols-4 lg:gap-8">
+              <span className="absolute left-1/2 top-12 hidden h-1 w-screen -translate-x-1/2 bg-zinc-400 lg:block" aria-hidden="true" />
+              {processSteps.map((step) => (
+                <li key={step.number} className="group relative">
+                  <div className={`relative z-10 mb-5 flex h-8 w-8 items-center justify-center rounded-full border-2 border-white text-xs font-bold text-white ring-1 ring-zinc-400 ring-offset-2 ring-offset-white transition-shadow duration-300 group-hover:ring-4 ${step.dot} ${step.halo} ${step.defaultHalo ? 'ring-4 ring-purple-500/20' : ''}`}>
+                    {step.number}
+                  </div>
+                  <div className="transition-transform duration-300 ease-out group-hover:-translate-y-1">
+                    <p className={`text-xs font-bold uppercase tracking-widest transition-colors duration-300 ${step.accent}`}>
+                      {step.stage}
+                    </p>
+                    <h3 className="mt-4 max-w-[13rem] text-2xl font-bold leading-tight tracking-tight text-zinc-900 transition-colors duration-300 group-hover:text-zinc-700 md:text-3xl">
+                      {step.title}
+                    </h3>
+                    <p className="mt-4 max-w-sm text-sm leading-relaxed text-zinc-600 transition-colors duration-300 group-hover:text-zinc-800 md:text-base">
+                      {step.description}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </motion.div>
         </motion.div>
       </Container>

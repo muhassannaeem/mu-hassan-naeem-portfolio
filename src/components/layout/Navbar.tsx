@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import Container from '@/components/ui/Container';
 
-const navLinks = ['About', 'Work', 'Services', 'Contact'];
+const navLinks = ['About', 'Services', 'Work', 'Contact'];
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

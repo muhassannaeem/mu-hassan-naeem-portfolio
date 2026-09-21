@@ -37,38 +37,31 @@ export default function FeaturedProjects() {
   return (
     <section
       id="work"
-      className="relative w-full py-12 md:py-20 flex items-center justify-center overflow-hidden"
+      className="relative w-full bg-white py-16 text-zinc-900 flex items-center justify-center overflow-hidden"
     >
-      {/* Background gradient elements */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        {/* Top left glow */}
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl" />
-        {/* Bottom right glow */}
-        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-      </div>
-
       {/* Main content */}
       <Container className="relative z-10">
         <motion.div
-          className="flex flex-col gap-8 md:gap-10"
+          className="flex flex-col gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
         >
           {/* Header */}
-          <motion.div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-6">
+          <motion.div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <SectionHeading
               label="Selected Work"
               title="Featured Projects"
               labelClassName="text-indigo-400"
+              titleClassName="text-zinc-900"
             />
 
             {/* View All Link */}
             <motion.a
               variants={itemVariants}
               href="/projects"
-              className="inline-flex items-center gap-2 text-sm md:text-base text-zinc-400 hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 text-sm md:text-base text-zinc-600 hover:text-zinc-900 transition-colors"
             >
               <span>View all Projects</span>
               <ExternalLink size={18} />
@@ -77,7 +70,7 @@ export default function FeaturedProjects() {
 
           {/* Projects Grid */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={containerVariants}
           >
             {featuredProjects.map((project, index) => (

@@ -84,7 +84,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative w-full py-12 md:py-20 flex items-center justify-center overflow-hidden"
+      className="relative w-full py-16 flex items-center justify-center overflow-hidden"
     >
       {/* Background gradient elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -198,7 +198,7 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="Your name"
                 required
-                className="px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all"
+                className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all"
               />
             </div>
 
@@ -215,7 +215,7 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="your@email.com"
                 required
-                className="px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all"
+                className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all"
               />
             </div>
 
@@ -232,7 +232,7 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="Project inquiry"
                 required
-                className="px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all"
+                className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all"
               />
             </div>
 
@@ -249,7 +249,7 @@ export default function Contact() {
                 placeholder="Tell me about your project..."
                 rows={3}
                 required
-                className="px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all resize-none"
+                className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all resize-none"
               />
             </div>
 
@@ -259,7 +259,7 @@ export default function Contact() {
               disabled={isSubmitting}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full px-6 py-2.5 rounded-lg text-white font-semibold flex items-center justify-center gap-2 hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full px-6 py-2 rounded-lg text-white font-semibold flex items-center justify-center gap-2 hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               style={{
                 background: 'linear-gradient(to right, #6366F1, #06B6D4)',
                 boxShadow: '0 0 20px rgba(6, 182, 212, 0.5)',

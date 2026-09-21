@@ -29,7 +29,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       transition={{ delay: index * 0.1 }}
       whileHover={{ y: -10, scale: 1.02 }}
       whileTap={{ scale: 0.99 }}
-      className="group flex flex-col h-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-all duration-300"
+      className="group flex flex-col h-full bg-zinc-950 border border-zinc-800 rounded-2xl overflow-hidden hover:border-zinc-600 transition-all duration-300"
     >
       <div className="relative w-full h-48 md:h-56 overflow-hidden bg-gradient-to-br from-zinc-900 to-zinc-950 border-b border-white/10">
         <Image
@@ -45,7 +45,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
 
-      <div className="flex flex-col gap-4 p-6 flex-grow">
+      <div className="flex flex-col gap-4 p-6 md:p-8 flex-grow">
         <div className="min-h-[3.5rem] md:min-h-[4rem] flex items-start">
           <h3 className="text-base md:text-lg font-semibold leading-snug text-white">
             {project.title}
