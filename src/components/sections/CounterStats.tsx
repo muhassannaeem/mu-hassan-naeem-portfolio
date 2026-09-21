@@ -135,9 +135,8 @@ export default function CounterStats() {
           variants={containerVariants}
           className="flex flex-col gap-8"
         >
-          <motion.div variants={cardVariants} className="flex items-center gap-4">
+          <motion.div variants={cardVariants}>
             <span className="text-xs font-bold uppercase tracking-widest text-cyan-400">Our Impact</span>
-            <span className="h-px flex-1 bg-gradient-to-r from-cyan-500/50 to-transparent" />
           </motion.div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-4">

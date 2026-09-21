@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
+import { Code2, Palette, Rocket, Search } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import SectionHeading from '@/components/ui/SectionHeading';
 
@@ -25,95 +26,56 @@ const itemVariants: Variants = {
   },
 };
 
-const cardVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.95, y: 20 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: 'easeOut' },
-  },
-};
-
-interface StatCard {
-  value: string;
-  label: string;
-  gradientFrom: string;
-  gradientVia: string;
-  gradientTo: string;
-}
-
-const stats: StatCard[] = [
+const processSteps = [
   {
-    value: '1+',
-    label: 'Years Experience',
-    gradientFrom: 'from-purple-400',
-    gradientVia: 'via-purple-500',
-    gradientTo: 'to-purple-600',
+    number: '01',
+    icon: Search,
+    border: 'hover:border-purple-300',
+    numberColor: 'text-purple-500',
+    iconColor: 'bg-purple-100 text-purple-500',
+    title: 'Discover',
+    description: 'We learn your business, goals, and what success looks like.',
   },
   {
-    value: '10+',
-    label: 'Happy Clients',
-    gradientFrom: 'from-cyan-400',
-    gradientVia: 'via-cyan-500',
-    gradientTo: 'to-cyan-600',
+    number: '02',
+    icon: Palette,
+    border: 'hover:border-blue-300',
+    numberColor: 'text-blue-500',
+    iconColor: 'bg-blue-100 text-blue-500',
+    title: 'Design',
+    description: 'We map out the experience and visual direction before writing code.',
   },
   {
-    value: '1K+',
-    label: 'Commits Made',
-    gradientFrom: 'from-orange-400',
-    gradientVia: 'via-orange-500',
-    gradientTo: 'to-orange-600',
+    number: '03',
+    icon: Code2,
+    border: 'hover:border-cyan-300',
+    numberColor: 'text-cyan-500',
+    iconColor: 'bg-cyan-100 text-cyan-500',
+    title: 'Build',
+    description: 'We develop, test, and refine, keeping you in the loop the whole way.',
   },
   {
-    value: '02+',
-    label: 'Tech Awards',
-    gradientFrom: 'from-indigo-400',
-    gradientVia: 'via-indigo-500',
-    gradientTo: 'to-indigo-600',
+    number: '04',
+    icon: Rocket,
+    border: 'hover:border-orange-300',
+    numberColor: 'text-orange-500',
+    iconColor: 'bg-orange-100 text-orange-500',
+    title: 'Launch & Support',
+    description: 'We ship it, then stick around to make sure it performs.',
   },
 ];
-
-interface StatItemProps {
-  stat: StatCard;
-  index: number;
-}
-
-function StatItem({ stat, index }: StatItemProps) {
-  return (
-    <motion.div
-      variants={cardVariants}
-      transition={{ delay: index * 0.1 }}
-      whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)' }}
-      className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:border-white/20 transition-all duration-300 cursor-default"
-    >
-      {/* Hover glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300" />
-
-      <div className="relative z-10 flex flex-col items-center text-center gap-3">
-        {/* Gradient Value */}
-        <div className={`bg-gradient-to-br ${stat.gradientFrom} ${stat.gradientVia} ${stat.gradientTo} bg-clip-text text-transparent`}>
-          <div className="text-4xl md:text-5xl font-bold">{stat.value}</div>
-        </div>
-
-        {/* Label */}
-        <p className="text-sm md:text-base text-zinc-400">{stat.label}</p>
-      </div>
-    </motion.div>
-  );
-}
 
 export default function About() {
   return (
     <section
       id="about"
-      className="relative w-full py-12 md:py-20 flex items-center justify-center overflow-hidden"
+      className="relative flex w-full items-center justify-center overflow-hidden bg-white py-12 text-zinc-900 md:py-20"
     >
       {/* Background gradient elements */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      <div className="pointer-events-none absolute inset-0 z-0">
         {/* Top left glow */}
            <motion.div
-             className="absolute top-1/4 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"
+             className="absolute left-0 top-1/4 h-96 w-96 rounded-full bg-purple-500/10 blur-3xl"
              animate={{ x: [0, 14, 0], y: [0, -12, 0], scale: [1, 1.08, 1], opacity: [0.45, 0.75, 0.45] }}
              transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut' }}
            />
@@ -124,43 +86,65 @@ export default function About() {
       {/* Main content */}
       <Container className="relative z-10">
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+          className="grid grid-cols-1 items-center gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
         >
-          {/* Left Column */}
-          <motion.div className="flex flex-col gap-6 order-2 lg:order-1">
+          <motion.div className="flex flex-col gap-6">
             <SectionHeading
-              label="About Me"
+              label="About Us"
               title="Innovating through Precision & Purpose"
               labelClassName="text-purple-400"
+              titleClassName="text-zinc-900"
             />
 
             <motion.div variants={itemVariants} className="space-y-5 pt-1">
-              <p className="text-base md:text-lg text-zinc-400 leading-relaxed">
-                I am a Software Engineer driven by the challenge of creating
-                high-impact digital products. With expertise spanning from low-level
-                systems to modern high-level frameworks, I bridge the gap between
-                technical complexity and intuitive user design.
-              </p>
-              <p className="text-base md:text-lg text-zinc-400 leading-relaxed">
-                Whether it&apos;s building robust backend architectures or crafting
-                pixel-perfect mobile interfaces, I focus on writing clean,
-                maintainable code that scales.
+              <p className="text-base leading-relaxed text-zinc-600 md:text-lg">
+                We&apos;re a digital product studio driven by the challenge of building
+                high-impact web, mobile, and AI-powered products. From backend
+                architecture to pixel-perfect interfaces, we bridge the gap between
+                technical complexity and intuitive design. Whether it&apos;s a scalable
+                web platform, a mobile app, or an AI-powered system, we focus on
+                writing clean, maintainable code — and building things that are built
+                to grow with your business.
               </p>
             </motion.div>
-          </motion.div>
 
-          {/* Right Column - Stats Grid */}
-          <motion.div
-            className="grid grid-cols-2 gap-4 md:gap-6 order-1 lg:order-2"
-            variants={containerVariants}
-          >
-            {stats.map((stat, index) => (
-              <StatItem key={index} stat={stat} index={index} />
-            ))}
+            <div className="mt-6 border-t border-zinc-200 pt-8 md:mt-8 md:pt-10">
+              <div className="mb-6">
+                <span className="text-xs font-bold uppercase tracking-widest text-purple-400">
+                  How We Work
+                </span>
+              </div>
+
+              <ol className="flex flex-col gap-4 lg:flex-row lg:gap-0">
+                {processSteps.map((step, index) => (
+                  <li
+                    key={step.number}
+                    className={`relative flex-1 ${
+                      index < processSteps.length - 1
+                        ? 'after:absolute after:left-5 after:top-full after:h-4 after:w-px after:bg-purple-500/30 lg:after:left-1/2 lg:after:top-1/2 lg:after:h-px lg:after:w-full'
+                        : ''
+                    }`}
+                  >
+                    <div className={`group relative z-10 h-full rounded-2xl border border-zinc-200 bg-zinc-50 p-6 pt-12 shadow-[0_8px_24px_rgba(24,24,27,0.08)] transition-all duration-300 hover:-translate-y-1 ${step.border} hover:shadow-[0_16px_32px_rgba(24,24,27,0.14)] md:p-7 md:pt-12 lg:mr-4`}>
+                      <span className={`absolute left-5 top-5 text-2xl font-extrabold tracking-tight ${step.numberColor} md:left-6 md:top-6 md:text-3xl`}>
+                        {step.number}
+                      </span>
+                      <div className={`mb-5 flex h-11 w-11 items-center justify-center rounded-full ${step.iconColor}`}>
+                        <step.icon size={21} strokeWidth={2} aria-hidden="true" />
+                      </div>
+                      <h3 className="text-lg font-semibold text-zinc-900">{step.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-zinc-600">
+                        {step.description}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </motion.div>
         </motion.div>
       </Container>
