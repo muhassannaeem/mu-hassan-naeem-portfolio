@@ -46,30 +46,29 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       </div>
 
       <div className="flex flex-col gap-4 p-6 md:p-8 flex-grow">
-        <div className="min-h-[3.5rem] md:min-h-[4rem] flex items-start">
+        <div className="flex flex-col items-start gap-2">
           <h3 className="text-base md:text-lg font-semibold leading-snug text-white">
             {project.title}
           </h3>
+          <span className="text-xs font-medium uppercase tracking-wider text-zinc-500">
+            {project.clientType}
+          </span>
         </div>
 
-        <p className="text-sm md:text-base text-zinc-400 leading-relaxed flex-grow min-h-[4.5rem] md:min-h-[5rem]">
-          {project.description}
-        </p>
+        <div className="flex flex-col gap-3 text-sm leading-relaxed md:text-base">
+          <p className="text-zinc-400">
+            <span className="font-medium text-zinc-500">Problem: </span>
+            {project.problem}
+          </p>
+          <p className="text-zinc-300">
+            <span className="font-semibold text-cyan-400">Result: </span>
+            {project.result}
+          </p>
+        </div>
 
-        <div className="flex flex-col gap-2 pt-2">
-          <h4 className="text-xs font-semibold tracking-widest text-zinc-500 uppercase">
-            Technology Stack
-          </h4>
-          <div className="flex flex-wrap gap-2">
-            {project.technologies.map((tech, i) => (
-              <span
-                key={i}
-                className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-zinc-400 transition-all duration-300 group-hover:border-white/20 group-hover:text-white"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
+        <div className="pt-1 text-xs text-zinc-500">
+          <span>Built with </span>
+          {project.technologies.join(' / ')}
         </div>
 
         <div className={`flex gap-3 pt-4 mt-auto ${!project.sourceUrl ? 'w-full' : ''}`}>
@@ -80,7 +79,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             className={`${!project.sourceUrl ? 'w-full' : 'flex-1'} flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-medium hover:bg-white/10 hover:border-white/20 transition-all`}
           >
             <ExternalLink size={16} />
-            <span>Live Demo</span>
+            <span>View Live Site</span>
           </a>
           {project.sourceUrl && (
             <a

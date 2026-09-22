@@ -1,9 +1,10 @@
 export interface Project {
   id: string;
   title: string;
-  description: string;
+  clientType: string;
+  problem: string;
+  result: string;
   image: string;
-  category: string;
   technologies: string[];
   liveUrl: string;
   sourceUrl: string;
@@ -13,10 +14,10 @@ export const projects: Project[] = [
   {
     id: 'ielts-counsel',
     title: 'IELTS Counsel',
-    description:
-      'A complete IELTS prep platform with Listening, Reading, Writing, and Speaking modules, personalized study plans, and real-time feedback to help you achieve your target score.',
+    clientType: 'Education / Test Prep',
+    problem: 'Students needed one place to practice all 4 IELTS modules with real feedback, not scattered free tools.',
+    result: 'Delivered a complete prep platform with personalized study plans and real-time feedback, built to keep students engaged and scoring higher.',
     image: '/ielts.png',
-    category: 'Technology Stack',
     technologies: ['Python', 'React', 'Tailwind'],
     liveUrl: 'https://www.ieltscounsel.com/',
     sourceUrl: '',
@@ -24,10 +25,10 @@ export const projects: Project[] = [
   {
     id: 'elevat8',
     title: 'Elevat8',
-    description:
-      'A gym website that presents training programs, core features, and a polished fitness-focused experience for visitors.',
+    clientType: 'Fitness & Wellness',
+    problem: 'A gym needed a modern site that reflects its brand and actually converts visitors into sign-ups, not just an info page.',
+    result: 'Built a polished, fitness-focused site showcasing programs and features designed to drive membership inquiries.',
     image: '/elevat8.png',
-    category: 'Technology Stack',
     technologies: ['React.js', 'Tailwind CSS'],
     liveUrl: 'https://elevat8-sigma.vercel.app/',
     sourceUrl: '',
@@ -35,10 +36,10 @@ export const projects: Project[] = [
   {
     id: 'code-smell-detection',
     title: 'Code Smell Detection',
-    description:
-      'A web-based tool that scans uploaded source code and flags common design issues like Bloaters, Couplers, and other Object-Oriented smells. Helps developers spot quality and maintainability problems early, with clear, structured feedback for each finding.',
+    clientType: 'Developer Tooling / AI',
+    problem: 'Development teams often catch code quality issues too late, after they\'ve already caused maintainability problems.',
+    result: 'Built a tool that scans code and flags design issues early, with clear, structured feedback that speeds up review time.',
     image: '/codesmell.png',
-    category: 'Technology Stack',
     technologies: ['React', 'Python', 'API'],
     liveUrl: 'https://code-smell-detection.vercel.app/',
     sourceUrl: '',
@@ -46,10 +47,10 @@ export const projects: Project[] = [
   {
     id: 'docxtract',
     title: 'DocXtract',
-    description:
-      'An AI-powered document intelligence platform that transforms PDFs into interactive learning resources through summarization, document chat, comparisons, quizzes, and flashcards, enabling faster understanding and knowledge extraction.',
+    clientType: 'AI Product / SaaS',
+    problem: 'People drowning in long PDFs with no fast way to extract, understand, or query the important parts.',
+    result: 'Built an AI platform that turns any document into summaries, quizzes, and an interactive chat, cutting document review time dramatically.',
     image: '/docxtract.png',
-    category: 'Technology Stack',
     technologies: ['Python', 'FastAPI', 'Next.js', 'MongoDB'],
     liveUrl: 'https://doc-xtract-frontend.vercel.app/',
     sourceUrl: '',
@@ -57,10 +58,10 @@ export const projects: Project[] = [
   {
     id: 'corefinity',
     title: 'Corefinity Studio',
-    description:
-      'Marketing site for Corefinity, a software studio that helps startups, businesses, and enterprises design, build, and launch web, mobile, and AI products. Clean hero, animated sections, and a service-led layout that converts visitors into real conversations.',
+    clientType: 'Software Studio / Agency',
+    problem: 'Needed a site that converts visitors into real client conversations, not just a portfolio to scroll past.',
+    result: 'Delivered a service-led site with animated sections and clean structure, built specifically to drive inbound inquiries.',
     image: '/corefinity.png',
-    category: 'Technology Stack',
     technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
     liveUrl: 'https://corefinity-website.vercel.app/',
     sourceUrl: '',
@@ -68,10 +69,10 @@ export const projects: Project[] = [
   {
     id: 'blood-pulse-connect',
     title: 'Blood Pulse Connect',
-    description:
-      'A full Figma design with prototypes for a blood-donation app that helps donors and recipients connect in minutes. Built around urgency, trust, and removing friction when it matters most.',
+    clientType: 'Healthcare / Social Impact (Design Concept)',
+    problem: 'Donors and recipients had no fast, trustworthy way to connect during urgent situations.',
+    result: 'Designed a full prototype built around speed and trust, reducing friction at the exact moment it matters most.',
     image: '/bloodpulse.png',
-    category: 'Technology Stack',
     technologies: ['Figma', 'UI/UX', 'Prototyping'],
     liveUrl: 'https://www.figma.com/design/EwgWWL85cK6T0Xs091esDv/Blood-Pulse-Connect?node-id=0-1&p=f',
     sourceUrl: '',
@@ -79,10 +80,10 @@ export const projects: Project[] = [
   {
     id: 'promography',
     title: 'Promography',
-    description:
-      'Find the perfect prompt for any task, from creative writing to complex problem-solving. Join thousands of creators sharing their best AI prompts.',
+    clientType: 'AI Product / SaaS',
+    problem: 'Creators struggle to find reliable, high-quality prompts for AI tools without digging through scattered forums.',
+    result: 'Built a platform where creators discover and share proven AI prompts, organized for fast, targeted searching.',
     image: '/promography.png',
-    category: 'Technology Stack',
     technologies: ['Next.js', 'Tailwind', 'Python'],
     liveUrl: 'https://promography.vercel.app/',
     sourceUrl: '',
@@ -90,10 +91,10 @@ export const projects: Project[] = [
   {
     id: 'apex-gym',
     title: 'Apex Gym',
-    description:
-      'A gym website that highlights training programs, key features, and membership-focused content in a clean, modern layout.',
+    clientType: 'Fitness & Wellness',
+    problem: 'A gym needed a clean, modern site to showcase programs and drive membership sign-ups.',
+    result: 'Delivered a membership-focused layout highlighting training programs and key features in a clean, modern design.',
     image: '/apexgym.png',
-    category: 'Technology Stack',
     technologies: ['Next.js', 'Tailwind CSS', 'Python'],
     liveUrl: 'https://apex-gym-red.vercel.app/',
     sourceUrl: '',
@@ -101,10 +102,10 @@ export const projects: Project[] = [
   {
     id: 'elevat8-design',
     title: 'Elevat8 Design',
-    description:
-      'A bold gym concept shaped to inspire motion, strength, and focus.',
+    clientType: 'Fitness & Wellness (Design Concept)',
+    problem: 'A gym brand needed a bold visual identity that captures energy and motivation before any code was written.',
+    result: 'Designed a full concept shaped around motion, strength, and focus, setting the visual direction for the brand.',
     image: '/elevat8.png',
-    category: 'Technology Stack',
     technologies: ['Figma', 'UI/UX', 'Prototyping'],
     liveUrl: 'https://www.figma.com/design/5NU6ClAKf500OX8ifW0qPw/Elevat8?node-id=0-1&p=f&t=6T73f2zgFyL0SP4M-0',
     sourceUrl: '',
