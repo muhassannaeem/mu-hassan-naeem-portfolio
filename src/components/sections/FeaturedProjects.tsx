@@ -1,10 +1,11 @@
 'use client';
 
 import React from 'react';
+import { useState } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import Container from '@/components/ui/Container';
-import { featuredProjects, type Project } from '@/config/projects';
+import { featuredProjects } from '@/config/projects';
 import ProjectCard from '@/components/sections/ProjectCard';
 import SectionHeading from '@/components/ui/SectionHeading';
 
@@ -28,12 +29,9 @@ const itemVariants: Variants = {
   },
 };
 
-interface ProjectCardProps {
-  project: Project;
-  index: number;
-}
-
 export default function FeaturedProjects() {
+  const [flippedProjectId, setFlippedProjectId] = useState<string | null>(null);
+
   return (
     <section
       id="work"
@@ -53,7 +51,7 @@ export default function FeaturedProjects() {
             <SectionHeading
               label="Selected Work"
               title="Featured Projects"
-              labelClassName="text-indigo-400"
+              labelClassName="text-purple-400"
               titleClassName="text-zinc-900"
             />
 
@@ -74,7 +72,13 @@ export default function FeaturedProjects() {
             variants={containerVariants}
           >
             {featuredProjects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} />
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={index}
+                isFlipped={flippedProjectId === project.id}
+                onFlip={() => setFlippedProjectId((currentId) => currentId === project.id ? null : project.id)}
+              />
             ))}
           </motion.div>
         </motion.div>

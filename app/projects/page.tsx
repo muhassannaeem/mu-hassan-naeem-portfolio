@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Container from '@/components/ui/Container';
@@ -5,6 +8,8 @@ import ProjectCard from '@/components/sections/ProjectCard';
 import { projects } from '@/config/projects';
 
 export default function ProjectsPage() {
+  const [flippedProjectId, setFlippedProjectId] = useState<string | null>(null);
+
   return (
     <main className="flex flex-col w-full bg-black text-white min-h-screen">
       <Navbar />
@@ -30,7 +35,13 @@ export default function ProjectsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {projects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} />
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={index}
+                isFlipped={flippedProjectId === project.id}
+                onFlip={() => setFlippedProjectId((currentId) => currentId === project.id ? null : project.id)}
+              />
             ))}
           </div>
         </Container>

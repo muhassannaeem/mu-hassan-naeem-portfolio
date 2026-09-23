@@ -8,7 +8,13 @@ import { motion } from 'framer-motion';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import Container from '@/components/ui/Container';
 
-const navLinks = ['About', 'Services', 'Work', 'Contact'];
+const navLinks = [
+  { label: 'Home', target: '#top' },
+  { label: 'About', target: '#about' },
+  { label: 'Services', target: '#services' },
+  { label: 'Work', target: '#work' },
+  { label: 'Contact', target: '#contact' },
+];
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -87,11 +93,11 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
             {navLinks.map((link) => (
               <motion.button
-                key={link}
-                onClick={() => handleScrollToSection(`#${link.toLowerCase()}`)}
+                key={link.label}
+                onClick={() => handleScrollToSection(link.target)}
                 className="text-sm text-zinc-400 hover:text-white transition-colors"
               >
-                {link}
+                {link.label}
               </motion.button>
             ))}
           </div>
@@ -141,12 +147,12 @@ export default function Navbar() {
         <Container className="py-6 flex flex-col gap-4">
           {navLinks.map((link) => (
             <motion.button
-              key={link}
-              onClick={() => handleScrollToSection(`#${link.toLowerCase()}`)}
+              key={link.label}
+              onClick={() => handleScrollToSection(link.target)}
               whileHover={{ x: 4 }}
               className="text-sm text-zinc-400 hover:text-white transition-colors text-left"
             >
-              {link}
+              {link.label}
             </motion.button>
           ))}
 

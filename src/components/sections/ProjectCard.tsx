@@ -3,7 +3,10 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion, Variants } from 'framer-motion';
-import { ExternalLink, Code } from 'lucide-react';
+import {
+  ArrowUpRight,
+  RotateCw,
+} from 'lucide-react';
 import type { Project } from '@/config/projects';
 
 const cardVariants: Variants = {
@@ -18,10 +21,23 @@ const cardVariants: Variants = {
 interface ProjectCardProps {
   project: Project;
   index: number;
+  isFlipped: boolean;
+  onFlip: () => void;
 }
 
-export default function ProjectCard({ project, index }: ProjectCardProps) {
+export default function ProjectCard({ project, index, isFlipped, onFlip }: ProjectCardProps) {
   const isFirstProject = index === 0;
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      onFlip();
+    }
+  };
+
+  const openLink = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.stopPropagation();
+  };
 
   return (
     <motion.div
@@ -29,67 +45,72 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       transition={{ delay: index * 0.1 }}
       whileHover={{ y: -10, scale: 1.02 }}
       whileTap={{ scale: 0.99 }}
-      className="group flex flex-col h-full bg-zinc-950 border border-zinc-800 rounded-2xl overflow-hidden hover:border-zinc-600 transition-all duration-300"
+      className="h-full"
     >
-      <div className="relative w-full h-48 md:h-56 overflow-hidden bg-gradient-to-br from-zinc-900 to-zinc-950 border-b border-white/10">
-        <Image
-          src={project.image}
-          alt={project.title}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          loading={isFirstProject ? 'eager' : 'lazy'}
-          priority={isFirstProject}
-          className="object-cover transition-transform duration-700 group-hover:scale-110"
-          quality={100}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      </div>
+      <div
+        className={`group project-card h-full ${isFlipped ? 'is-flipped' : ''}`}
+        role="button"
+        tabIndex={0}
+        aria-expanded={isFlipped}
+        aria-label={`${isFlipped ? 'Hide' : 'View'} details for ${project.title}`}
+        aria-live={isFlipped ? 'polite' : 'off'}
+        onClick={onFlip}
+        onKeyDown={handleKeyDown}
+      >
+        <div className="project-card-face project-card-front flex h-full flex-col overflow-hidden">
+          <div className="relative aspect-video w-full overflow-hidden border-b border-white/10 bg-zinc-900">
+            <Image
+              src={project.image}
+              alt={`${project.title} project preview`}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              loading={isFirstProject ? 'eager' : 'lazy'}
+              priority={isFirstProject}
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              quality={100}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          </div>
 
-      <div className="flex flex-col gap-4 p-6 md:p-8 flex-grow">
-        <div className="flex flex-col items-start gap-2">
-          <h3 className="text-base md:text-lg font-semibold leading-snug text-white">
-            {project.title}
-          </h3>
-          <span className="text-xs font-medium uppercase tracking-wider text-zinc-500">
-            {project.clientType}
-          </span>
+          <div className="flex flex-1 flex-col gap-6 p-6 md:p-8">
+            <div className="min-w-0">
+              <h3 className="text-lg font-bold leading-snug text-white">{project.title}</h3>
+              <span className="mt-3 inline-flex max-w-full rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wide text-zinc-400">
+                {project.clientType}
+              </span>
+              <p className="mt-6 max-w-sm text-sm leading-relaxed text-zinc-400">{project.outcomeTeaser}</p>
+              <span className="mt-5 inline-flex items-center gap-1.5 text-xs text-zinc-500 transition-colors group-hover:text-zinc-300">
+                <RotateCw size={13} aria-hidden="true" />
+                <span>Tap to explore</span>
+              </span>
+            </div>
+
+            <div className="mt-auto flex items-end justify-between gap-4 pt-6">
+              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" onClick={openLink} className="inline-flex items-center gap-2 border-b border-white/25 pb-1 text-sm font-medium text-zinc-300 transition-colors hover:border-cyan-300 hover:text-cyan-200">
+                <span>View Live Site</span>
+                <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div className="flex flex-col gap-3 text-sm leading-relaxed md:text-base">
-          <p className="text-zinc-400">
-            <span className="font-medium text-zinc-500">Problem: </span>
-            {project.problem}
-          </p>
-          <p className="text-zinc-300">
-            <span className="font-semibold text-cyan-400">Result: </span>
-            {project.result}
-          </p>
-        </div>
+        <div className="project-card-face project-card-back flex h-full flex-col p-6 md:p-8">
+          <div>
+            <h3 className="text-lg font-bold leading-snug text-white">{project.title}</h3>
+            <p className="mt-3 text-xs text-zinc-500">{project.technologies.join(' · ')}</p>
+          </div>
 
-        <div className="pt-1 text-xs text-zinc-500">
-          <span>Built with </span>
-          {project.technologies.join(' / ')}
-        </div>
+          <div className="mt-10 space-y-7 text-sm leading-relaxed">
+            <p className="text-zinc-400">{project.problem}</p>
+            <p className="font-semibold text-white">{project.result}</p>
+          </div>
 
-        <div className={`flex gap-3 pt-4 mt-auto ${!project.sourceUrl ? 'w-full' : ''}`}>
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${!project.sourceUrl ? 'w-full' : 'flex-1'} flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-medium hover:bg-white/10 hover:border-white/20 transition-all`}
-          >
-            <ExternalLink size={16} />
-            <span>View Live Site</span>
-          </a>
-          {project.sourceUrl && (
-            <a
-              href={project.sourceUrl}
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-medium hover:bg-white/10 hover:border-white/20 transition-all"
-            >
-              <Code size={16} />
-              <span>Source</span>
+          <div className="mt-auto flex justify-end pt-8">
+            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" onClick={openLink} className="inline-flex items-center gap-2 border-b border-white/25 pb-1 text-sm font-medium text-zinc-300 transition-colors hover:border-cyan-300 hover:text-cyan-200">
+              <span>View Live Site</span>
+              <ArrowUpRight size={15} aria-hidden="true" />
             </a>
-          )}
+          </div>
         </div>
       </div>
     </motion.div>
