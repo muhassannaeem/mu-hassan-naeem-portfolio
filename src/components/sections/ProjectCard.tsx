@@ -42,7 +42,7 @@ export default function ProjectCard({ project, index, isFlipped, onFlip }: Proje
   return (
     <motion.div
       variants={cardVariants}
-      transition={{ delay: index * 0.1 }}
+      transition={{ delay: index * 0.07 }}
       whileHover={{ y: -10, scale: 1.02 }}
       whileTap={{ scale: 0.99 }}
       className="h-full"

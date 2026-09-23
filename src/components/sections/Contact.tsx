@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, Variants } from 'framer-motion';
-import { Mail, MapPin, Send } from 'lucide-react';
+import { CheckCircle2, Loader2, Mail, MapPin, Send } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import SectionHeading from '@/components/ui/SectionHeading';
 
@@ -42,11 +42,13 @@ export default function Contact() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
+    setSubmitStatus('idle');
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -56,6 +58,7 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus('sending');
 
     try {
       const response = await fetch('/api/contact', {
@@ -69,13 +72,13 @@ export default function Contact() {
       if (response.ok) {
         // Reset form
         setFormData({ fullName: '', email: '', subject: '', message: '' });
-        alert('Message sent successfully! I will get back to you soon.');
+        setSubmitStatus('success');
       } else {
-        alert('Failed to send message. Please try again.');
+        setSubmitStatus('error');
       }
     } catch (error) {
       console.error('Error sending message:', error);
-      alert('An error occurred. Please try again later.');
+      setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
     }
@@ -132,7 +135,9 @@ export default function Contact() {
               {/* Email */}
               <motion.a
                 variants={itemVariants}
-                href="mailto:muhassannaeem@gmail.com"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=muhassannaeem@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-3 text-zinc-300 hover:text-white transition-colors group"
               >
                 <div className="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center group-hover:bg-indigo-500/30 transition-colors">
@@ -172,8 +177,11 @@ export default function Contact() {
                 </svg>
               </a>
               <a
-                href="mailto:muhassannaeem@gmail.com"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=muhassannaeem@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Email Muhammad Hassan Naeem"
+                title="Email Muhammad Hassan Naeem"
                 className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 hover:border-white/20 transition-all"
               >
                 <Mail size={20} aria-hidden="true" />
@@ -200,7 +208,7 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="Your name"
                 required
-                className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all"
+                className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/20 focus:bg-white/10 transition-all duration-200 ease-out"
               />
             </div>
 
@@ -217,7 +225,7 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="your@email.com"
                 required
-                className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all"
+                className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/20 focus:bg-white/10 transition-all duration-200 ease-out"
               />
             </div>
 
@@ -234,7 +242,7 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="Project inquiry"
                 required
-                className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all"
+                className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/20 focus:bg-white/10 transition-all duration-200 ease-out"
               />
             </div>
 
@@ -251,7 +259,7 @@ export default function Contact() {
                 placeholder="Tell me about your project..."
                 rows={3}
                 required
-                className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all resize-none"
+                className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/20 focus:bg-white/10 transition-all duration-200 ease-out resize-none"
               />
             </div>
 
@@ -267,9 +275,12 @@ export default function Contact() {
                 boxShadow: '0 0 20px rgba(6, 182, 212, 0.5)',
               }}
             >
-              <Send size={18} />
-              {isSubmitting ? 'Sending...' : 'Send Message'}
+              {isSubmitting ? <Loader2 size={18} className="animate-spin" aria-hidden="true" /> : submitStatus === 'success' ? <CheckCircle2 size={18} aria-hidden="true" /> : <Send size={18} aria-hidden="true" />}
+              {isSubmitting ? 'Sending...' : submitStatus === 'success' ? 'Message Sent' : 'Send Message'}
             </motion.button>
+            <p aria-live="polite" className={`min-h-5 text-sm ${submitStatus === 'success' ? 'text-emerald-400' : submitStatus === 'error' ? 'text-rose-400' : 'text-transparent'}`}>
+              {submitStatus === 'success' ? 'Thanks, your message is on its way.' : submitStatus === 'error' ? 'Something went wrong. Please try again.' : '\u00a0'}
+            </p>
           </motion.form>
         </motion.div>
       </Container>

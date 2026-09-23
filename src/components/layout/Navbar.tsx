@@ -19,18 +19,32 @@ const navLinks = [
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('top');
   const [isMounted] = useState(true);
   const pathname = usePathname();
   const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 10);
+
+      if (pathname !== '/') return;
+
+      const sections = ['top', 'about', 'services', 'work', 'contact'];
+      const currentSection = sections.reduce((current, sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (section && section.offsetTop - 140 <= scrollY) return sectionId;
+        return current;
+      }, 'top');
+
+      setActiveSection(currentSection);
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [pathname]);
 
   const handleScrollToSection = (sectionId: string) => {
     setIsMobileMenuOpen(false);
@@ -64,13 +78,13 @@ export default function Navbar() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
         suppressHydrationWarning
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ease-out ${
           isMounted && isScrolled
             ? 'bg-black/50 backdrop-blur-xl border-b border-white/8'
             : 'bg-transparent'
         }`}
       >
-        <Container className="flex items-center justify-between h-20">
+        <Container className={`flex items-center justify-between transition-[height] duration-200 ease-out ${isScrolled ? 'h-16' : 'h-20'}`}>
           {/* Logo and Name - Left */}
           <motion.div
             className="flex items-center gap-3 flex-1"
@@ -95,9 +109,17 @@ export default function Navbar() {
               <motion.button
                 key={link.label}
                 onClick={() => handleScrollToSection(link.target)}
-                className="text-sm text-zinc-400 hover:text-white transition-colors"
+                className={`relative py-2 text-sm transition-colors ${activeSection === link.target.slice(1) ? 'text-white' : 'text-zinc-400 hover:text-white'}`}
+                aria-current={activeSection === link.target.slice(1) ? 'location' : undefined}
               >
                 {link.label}
+                {activeSection === link.target.slice(1) && (
+                  <motion.span
+                    layoutId="active-nav-indicator"
+                    className="absolute inset-x-0 -bottom-1 h-px bg-cyan-300"
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
+                  />
+                )}
               </motion.button>
             ))}
           </div>
@@ -142,7 +164,7 @@ export default function Navbar() {
           height: isMobileMenuOpen ? 'auto' : 0,
         }}
         transition={{ duration: 0.3 }}
-        className="fixed top-20 left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-b border-white/8 md:hidden overflow-hidden"
+        className={`fixed left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-b border-white/8 md:hidden overflow-hidden transition-[top] duration-200 ease-out ${isScrolled ? 'top-16' : 'top-20'}`}
       >
         <Container className="py-6 flex flex-col gap-4">
           {navLinks.map((link) => (

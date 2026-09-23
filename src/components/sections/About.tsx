@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react';
-import { motion, Variants } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, type MotionValue, Variants } from 'framer-motion';
 import Container from '@/components/ui/Container';
 import SectionHeading from '@/components/ui/SectionHeading';
 
@@ -69,7 +69,67 @@ const processSteps = [
   },
 ];
 
+function TimelineStep({
+  step,
+  index,
+  progress,
+}: {
+  step: (typeof processSteps)[number];
+  index: number;
+  progress: MotionValue<number>;
+}) {
+  const revealAt = [0.07, 0.21, 0.35, 0.5][index];
+  const contentOpacity = useTransform(progress, [Math.max(0, revealAt - 0.1), revealAt], [0, 1]);
+  const contentY = useTransform(progress, [Math.max(0, revealAt - 0.1), revealAt], [14, 0]);
+  const dotScale = useTransform(
+    progress,
+    [Math.max(0, revealAt - 0.05), revealAt, Math.min(1, revealAt + 0.08)],
+    [0.95, 1.12, 1],
+  );
+  const dotGlow = useTransform(
+    progress,
+    [Math.max(0, revealAt - 0.05), revealAt, Math.min(1, revealAt + 0.08)],
+    [
+      '0 0 0 2px rgba(161, 161, 170, 0.2)',
+      '0 0 0 5px rgba(99, 102, 241, 0.24)',
+      '0 0 0 2px rgba(161, 161, 170, 0.2)',
+    ],
+  );
+
+  return (
+    <li className="group relative">
+      <motion.div
+        style={{ scale: dotScale, boxShadow: dotGlow }}
+        className={`relative z-10 mb-5 flex h-8 w-8 items-center justify-center rounded-full border-2 border-white text-xs font-bold text-white ring-1 ring-zinc-400 ring-offset-2 ring-offset-white transition-shadow duration-300 group-hover:ring-4 ${step.dot} ${step.halo}`}
+      >
+        {step.number}
+      </motion.div>
+      <motion.div
+        style={{ opacity: contentOpacity, y: contentY }}
+        className="transition-transform duration-300 ease-out group-hover:-translate-y-1"
+      >
+        <p className={`text-xs font-bold uppercase tracking-widest transition-colors duration-300 ${step.accent}`}>
+          {step.stage}
+        </p>
+        <h3 className="mt-4 max-w-[13rem] text-2xl font-bold leading-tight tracking-tight text-zinc-900 transition-colors duration-300 group-hover:text-zinc-700 md:text-3xl">
+          {step.title}
+        </h3>
+        <p className="mt-4 max-w-sm text-sm leading-relaxed text-zinc-600 transition-colors duration-300 group-hover:text-zinc-800 md:text-base">
+          {step.description}
+        </p>
+      </motion.div>
+    </li>
+  );
+}
+
 export default function About() {
+  const timelineRef = useRef<HTMLOListElement>(null);
+  const { scrollYProgress: timelineProgress } = useScroll({
+    target: timelineRef,
+    offset: ['start 85%', 'end 45%'],
+  });
+  const timelineDrawProgress = useTransform(timelineProgress, [0, 0.5], [0, 1]);
+
   return (
     <section
       id="about"
@@ -143,25 +203,14 @@ export default function About() {
               </p>
             </motion.div>
 
-            <ol className="relative mt-8 grid grid-cols-1 gap-8 pt-8 md:grid-cols-2 md:gap-x-8 lg:grid-cols-4 lg:gap-8">
-              <span className="absolute left-1/2 top-12 hidden h-1 w-screen -translate-x-1/2 bg-zinc-400 lg:block" aria-hidden="true" />
-              {processSteps.map((step) => (
-                <li key={step.number} className="group relative">
-                  <div className={`relative z-10 mb-5 flex h-8 w-8 items-center justify-center rounded-full border-2 border-white text-xs font-bold text-white ring-1 ring-zinc-400 ring-offset-2 ring-offset-white transition-shadow duration-300 group-hover:ring-4 ${step.dot} ${step.halo} ${step.defaultHalo ? 'ring-4 ring-purple-500/20' : ''}`}>
-                    {step.number}
-                  </div>
-                  <div className="transition-transform duration-300 ease-out group-hover:-translate-y-1">
-                    <p className={`text-xs font-bold uppercase tracking-widest transition-colors duration-300 ${step.accent}`}>
-                      {step.stage}
-                    </p>
-                    <h3 className="mt-4 max-w-[13rem] text-2xl font-bold leading-tight tracking-tight text-zinc-900 transition-colors duration-300 group-hover:text-zinc-700 md:text-3xl">
-                      {step.title}
-                    </h3>
-                    <p className="mt-4 max-w-sm text-sm leading-relaxed text-zinc-600 transition-colors duration-300 group-hover:text-zinc-800 md:text-base">
-                      {step.description}
-                    </p>
-                  </div>
-                </li>
+            <ol ref={timelineRef} style={{ position: 'relative' }} className="relative mt-8 grid grid-cols-1 gap-8 pt-8 md:grid-cols-2 md:gap-x-8 lg:grid-cols-4 lg:gap-8">
+              <motion.span
+                style={{ scaleX: timelineDrawProgress }}
+                className="pointer-events-none absolute left-0 right-[11%] top-12 hidden h-1 origin-left bg-zinc-400 lg:block"
+                aria-hidden="true"
+              />
+              {processSteps.map((step, index) => (
+                <TimelineStep key={step.number} step={step} index={index} progress={timelineProgress} />
               ))}
             </ol>
           </motion.div>

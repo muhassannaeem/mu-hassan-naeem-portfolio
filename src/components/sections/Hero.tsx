@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { motion, useInView, Variants } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform, Variants } from 'framer-motion';
 import Container from '@/components/ui/Container';
 
 const containerVariants: Variants = {
@@ -30,8 +30,8 @@ const titleVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.15,
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
     },
   },
 };
@@ -92,15 +92,13 @@ const stats: Stat[] = [
   },
 ];
 
-function CountUp({ stat }: { stat: Stat }) {
+function CountUp({ stat, start }: { stat: Stat; start: boolean }) {
   const [count, setCount] = useState(0);
-  const countRef = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(countRef, { once: true, margin: '-100px' });
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!start) return;
 
-    const duration = 1200;
+    const duration = 900;
     const startTime = performance.now();
     let animationFrame = 0;
 
@@ -116,10 +114,10 @@ function CountUp({ stat }: { stat: Stat }) {
 
     animationFrame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationFrame);
-  }, [isInView, stat.value]);
+  }, [start, stat.value]);
 
   return (
-    <span ref={countRef}>
+    <span>
       {stat.prefix}
       {count}
       {stat.suffix}
@@ -128,6 +126,11 @@ function CountUp({ stat }: { stat: Stat }) {
 }
 
 export default function Hero() {
+  const statsRef = useRef<HTMLDivElement>(null);
+  const statsInView = useInView(statsRef, { once: true, amount: 0.4 });
+  const { scrollY } = useScroll();
+  const imageParallaxY = useTransform(scrollY, [0, 900], [0, -12]);
+
   const scrollToContact = () => {
     const element = document.querySelector('#contact');
     if (element) {
@@ -270,7 +273,7 @@ export default function Hero() {
               </motion.button>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex flex-col gap-6 pt-2">
+            <motion.div ref={statsRef} variants={itemVariants} className="flex flex-col gap-6 pt-2">
               <div className="grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-4 sm:gap-4">
                 {stats.map((stat) => (
                   <motion.div
@@ -280,7 +283,7 @@ export default function Hero() {
                     className="group flex min-w-0 flex-col items-center gap-2 text-center"
                   >
                     <div className={`bg-gradient-to-br ${stat.gradient} bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl`}>
-                      <CountUp stat={stat} />
+                      <CountUp stat={stat} start={statsInView} />
                     </div>
                     <p className="max-w-[8rem] text-xs uppercase tracking-wider text-zinc-500">
                       {stat.label}
@@ -301,6 +304,7 @@ export default function Hero() {
               variants={floatVariants}
               initial="initial"
               animate="animate"
+              style={{ y: imageParallaxY }}
               whileHover={{ y: -8, rotate: -1 }}
               className="relative w-full mt-8 -translate-y-4 max-w-xs lg:max-w-sm lg:-translate-y-6"
             >

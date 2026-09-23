@@ -102,7 +102,7 @@ function ServiceRow({ service, index, isOpen, onToggle }: ServiceCardProps) {
           {String(index + 1).padStart(2, '0')}
         </span>
         <span
-          className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg ${service.accentColor} text-white shadow-none transition-shadow duration-300 group-hover:shadow-lg ${service.hoverGlow}`}
+          className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg ${service.accentColor} text-white shadow-none transition-[transform,box-shadow] duration-200 ease-out group-hover:scale-105 group-hover:rotate-3 group-hover:shadow-lg ${service.hoverGlow}`}
         >
           {service.icon}
         </span>
