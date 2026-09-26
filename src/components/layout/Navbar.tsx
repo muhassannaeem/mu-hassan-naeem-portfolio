@@ -78,13 +78,13 @@ export default function Navbar() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
         suppressHydrationWarning
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ease-out ${
+        className={`fixed top-4 left-4 right-4 md:top-6 md:left-8 md:right-8 xl:left-12 xl:right-12 z-50 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.28)] transition-all duration-200 ease-out ${
           isMounted && isScrolled
             ? 'bg-black/50 backdrop-blur-xl border-b border-white/8'
-            : 'bg-transparent'
+            : 'bg-black/35 backdrop-blur-md border border-white/8'
         }`}
       >
-        <Container className={`flex items-center justify-between transition-[height] duration-200 ease-out ${isScrolled ? 'h-16' : 'h-20'}`}>
+        <Container className={`flex items-center justify-between transition-[height] duration-200 ease-out ${isScrolled ? 'h-[3.75rem]' : 'h-[4.75rem]'}`}>
           {/* Logo and Name - Left */}
           <motion.div
             className="flex items-center gap-3 flex-1"
@@ -94,8 +94,8 @@ export default function Navbar() {
               <Image
                 src="/logox.png"
                 alt="Logo"
-                width={160}
-                height={160}
+                width={130}
+                height={130}
                 loading="eager"
                 priority
                 className="flex-shrink-0"
@@ -164,7 +164,7 @@ export default function Navbar() {
           height: isMobileMenuOpen ? 'auto' : 0,
         }}
         transition={{ duration: 0.3 }}
-        className={`fixed left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-b border-white/8 md:hidden overflow-hidden transition-[top] duration-200 ease-out ${isScrolled ? 'top-16' : 'top-20'}`}
+        className={`fixed left-4 right-4 z-40 bg-black/80 backdrop-blur-xl border border-white/8 rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.28)] md:hidden overflow-hidden transition-[top] duration-200 ease-out ${isScrolled ? 'top-20' : 'top-24'}`}
       >
         <Container className="py-6 flex flex-col gap-4">
           {navLinks.map((link) => (
